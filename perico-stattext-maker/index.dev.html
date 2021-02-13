@@ -1,0 +1,1987 @@
+<html>
+<head>
+<style>
+body
+{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+}
+#main
+{
+    width: 100vw;
+    height: 56.25vw;
+    background-image: url(img/main.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+}
+#hardModeButton
+{
+    background-repeat: no-repeat;
+    width: 20.2vw;
+    height: 3.8vw;
+    position: absolute;
+    top: 47.05vw;
+    left: 71vw;
+    cursor: url(img/cursor.png) 10 2,pointer;
+    background-size: 100% 100%;
+
+}
+.hardOn
+{
+    background-image: url(img/hard_mode_on.png);
+}
+.hardOff
+{
+    background-image: url(img/hard_mode_off.png);
+
+}
+#lootFrame
+{
+    z-index: 2;
+    top: 32vw;
+    left: 6.75vw;
+    width: 27.35vw;
+    height: 14.7vw;
+    background-image: url(img/loot_frame.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    cursor: url(img/cursor.png),pointer;
+    overflow: hidden;
+}
+#lootPic
+{
+    z-index: 0;
+    top: 32.1vw;
+    left: 7.1vw;
+    width: 26.75vw;
+    height: 14.5vw;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+}
+#lootName
+{
+    top: 46.7vw;
+    left: 7vw;
+    width: 26.7vw;
+    height: 3.5vw;
+    text-align: center;
+    display: block;
+    color: transparent;
+    text-shadow: 0 0 0.1vw rgb(228 89 88);
+    font-size: 1.8vw;
+    position: absolute;
+    line-height: 200%;
+    user-select: none;
+}
+#lootSelector
+{
+    top: 10%;
+    left: 3.5%;
+    width: 95%;
+    height: 95%;
+    position: absolute;
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+}
+#lootSelector:hover .lootObject
+{
+    z-index: 0;
+    width: 15%;
+    transition: width 0.05s linear, background-size 0.05s linear;
+}
+#lootSelector:hover .lootObject:last-child
+{
+    z-index: 1 !important;
+    width: 65% !important;
+    transform: perspective(0) rotateY(0deg);
+}
+.lootTequilla { background-image: url(img/primary_loot/tequilla.png); }
+.lootNecklace { background-image: url(img/primary_loot/necklace.png); }
+.lootBonds { background-image: url(img/primary_loot/bonds.png); }
+.lootDiamond { background-image: url(img/primary_loot/diamond.png); }
+.lootPanther { background-image: url(img/primary_loot/panther.png); }
+.lootFiles { background-image: url(img/primary_loot/files.png); }
+.lootObject
+{
+    z-index: 0;
+    transform: perspective(500px) rotateY(35deg);
+    width: 24%;
+    height: 81%;
+    background-repeat: no-repeat;
+    background-position: 40% 50%;
+    background-size: 200% 200%;
+    border: 0.55vw solid #f0eeef9c;
+    border-radius: 2px;
+    display: inline-block;
+    margin-right: -15%;
+    cursor: url(img/cursor.png),pointer;
+    margin-bottom: 3%;
+}
+.lootObject:hover
+{
+    z-index: 1 !important;
+    border-color: #f0ec809c !important;
+    width: 65% !important;
+    background-size: 100% 100%;
+    /* height: 65%; */
+    transform: perspective(0) rotateY(0deg);
+}
+.hidden
+{
+    display: none;
+}
+
+#primaryName
+{
+    position: absolute;
+    width: 14.7vw;
+    height: 2.3vw;
+    top: 4.7vw;
+    right: 7.8vw;
+    text-align: center;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #411c1be6;
+    font-size: 1.4vw;
+    line-height: 1.9vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    user-select: none;
+}
+#primaryValue
+{
+    position: absolute;
+    width: 14.7vw;
+    height: 2.8vw;
+    top: 6.9vw;
+    right: 7.8vw;
+    text-align: center;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #ffffffab;
+    font-size: 1.4vw;
+    line-height: 2.5vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    user-select: none;
+}
+#setupContainer
+{
+    position: absolute;
+    width: 26.5vw;
+    height: 25.3vw;
+    top: 5.6vw;
+    left: 7.5vw;
+    border: 0px solid #ffffffab;
+}
+.setupCategory
+{
+    height: 3vw;
+    background-image: url(img/element.png);
+    background-size: 100% 110%;
+    padding-left: 0.5vw;
+    cursor: url(img/cursor.png),pointer;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #ffffffab;
+    padding-top: 0px;
+    margin-bottom: 0.3vw;
+    position: relative;
+}
+.setupCategory:hover
+{
+    background-color: #ffffffab;
+    text-shadow: 0 0 0.1vw #000;
+    transition: background-color 0.5s linear;
+}
+.setupCategory span
+{
+    color: inherit;
+    text-shadow: inherit;
+    padding-left: 1.8vw;
+    font-size: 1.5vw;
+    line-height: 3vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    user-select: none;
+    pointer-events: none;
+}
+.backButton
+{
+    cursor: url(img/cursor.png),pointer;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #ffffffab;
+    height: 3vw;
+    font-size: 1.5vw;
+    line-height: 3vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    user-select: none;
+}
+.checkbox
+{
+    width: 6%;
+    height: 60%;
+    position: absolute;
+    top: 20%;
+    display: inline-flex;
+    margin: 0;
+    line-height: 4vh;
+    pointer-events: none;
+}
+.checked
+{
+    background-image: url(img/checked.png);
+    background-size: 100% 100%;
+}
+.teamSize
+{
+    text-align: center;
+}
+.playerCut, .teamSize
+{
+    background-color: transparent;
+    outline: none;
+    border: 0px;
+    color: #827d7d;
+    font-size: 1.4vw;
+    width: 4vw;
+    right: 5%;
+    position: absolute;
+    top: 0.8vw;
+    border-radius: 25%;
+}
+.setupCategory:hover .playerCut, .setupCategory:hover .teamSize
+{
+    color: black;
+}
+.moneyLimitLabel
+{
+    position: absolute;
+    width: 14.7vw;
+    height: 2.3vw;
+    text-align: center;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #411c1be6;
+    font-size: 1.4vw;
+    line-height: 1.9vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+}
+.moneyLimit
+{
+    position: absolute;
+    width: 14.7vw;
+    height: 2.8vw;
+    text-align: center;
+    color: transparent;
+    text-shadow: 0 0 1.5px #f0eeef9c;
+    font-size: 1.4vw;
+    line-height: 3.4vh;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    background-color: transparent;
+    border: 0px;
+    outline: none;
+    caret-color: #f0eeef9c;
+}
+#cutLimitLabel
+{
+    top: 17.6vw;
+    right: 7.95vw;
+    user-select: none;
+}
+#cutLimit
+{
+    top: 19.9vw;
+    right: 7.95vw;
+}
+#takeLimitLabel
+{
+    top: 11.1vw;
+    right: 7.9vw;
+    user-select: none;
+}
+#takeLimit
+{
+    top: 13.3vw;
+    right: 7.95vw;
+}
+.error
+{
+    animation: errorFont 1s infinite;
+}
+@keyframes errorFont
+{
+  0% { text-shadow: 0 0 1.5px #f0eeef9c; }
+  50% { text-shadow: 0 0 1.5px #411c1be6; }
+  100% { text-shadow: 0 0 1.5px #f0eeef9c; }
+}
+.truckIcon
+{
+    background-image: url(img/truck_off.png);
+    background-size: 100% 100%;
+    width: 1.4vw;
+    height: 1.7vw;
+    position: absolute;
+    cursor: url(img/cursor.png),pointer;
+}
+.truckOn
+{
+    background-image: url(img/truck_on.png);
+}
+#truck1
+{
+    top: 11vw;
+    left: 56.4vw;
+}
+#truck2
+{
+    top: 13.2vw;
+    left: 71vw;
+}
+#truck3
+{
+    top: 24.6vw;
+    left: 70.3vw;
+}
+#truck4
+{
+    top: 26.6vw;
+    left: 66.3vw;
+}
+#truck5
+{
+    top: 38.6vw;
+    left: 66.5vw;
+}
+.hookIcon
+{
+    background-image: url(img/grappling_hook_off.png);
+    background-size: 100% 100%;
+    width: 1.7vw;
+    height: 1.7vw;
+    position: absolute;
+    cursor: url(img/cursor.png),pointer;
+}
+.hookOn
+{
+    background-image: url(img/grappling_hook_on.png);
+}
+#hook1
+{
+    top: 15.9vw;
+    left: 55.4vw;
+}
+#hook2
+{
+    top: 13.2vw;
+    left: 68.9vw;
+}
+#hook3
+{
+    top: 26.5vw;
+    left: 70vw;
+}
+#hook4
+{
+    top: 38vw;
+    left: 81vw;
+}
+.clothesIcon
+{
+    background-image: url(img/clothes_off.png);
+    background-size: 100% 100%;
+    width: 1.7vw;
+    height: 1.7vw;
+    position: absolute;
+    cursor: url(img/cursor.png),pointer;
+}
+.clothesOn
+{
+    background-image: url(img/clothes_on.png);
+}
+#clothes1
+{
+    top: 12.3vw;
+    left: 54.4vw;
+}
+#clothes2
+{
+    top: 11.4vw;
+    left: 69.9vw;
+}
+#clothes3
+{
+    top: 29vw;
+    left: 65.7vw;
+}
+#clothes4
+{
+    top: 32.8vw;
+    left: 64.5vw;
+}
+.cuttersIcon
+{
+    background-image: url(img/bolt_cutters_off.png);
+    background-size: 100% 100%;
+    width: 1.7vw;
+    height: 1.7vw;
+    position: absolute;
+    cursor: url(img/cursor.png),pointer;
+}
+.cuttersOn
+{
+    background-image: url(img/bolt_cutters_on.png);
+}
+#cutters1
+{
+    top: 13.3vw;
+    left: 56.4vw;
+}
+#cutters2
+{
+    top: 15.1vw;
+    left: 71.2vw;
+}
+#cutters3
+{
+    top: 24.4vw;
+    left: 66.7vw;
+}
+#cutters4
+{
+    top: 34.8vw;
+    left: 61.5vw;
+}
+.invisibleTextarea
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    zIndex: -1;
+}
+#playerCutContainer
+{
+    background-image: url(img/player_cuts.png);
+    background-size: 100% 100%;
+    width: 23vw;
+    height: 10vw;
+    position: absolute;
+    top: 38vw;
+    left: 36vw;
+}
+#totalCut
+{
+    position: absolute;
+    top: 48vw;
+    right: 43vw;
+    color: transparent;
+    text-shadow: 0 0 1.5px #f0eeef9c;
+    font-size: 1.5vw;
+    line-height: 2.8vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    user-select: none;
+}
+.playerMoney
+{
+    color: transparent;
+    text-shadow: 0 0 0.1vw #ffffffab;
+    padding-left: 1.8vw;
+    font-size: 1.5vw;
+    line-height: 2.4vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    user-select: none;
+    pointer-events: none;
+    position: relative;
+}
+.playerMoney span:last-child
+{
+    right: 2vw;
+    position: absolute;
+    top: 0.2vw;
+}
+#stattextContainer
+{
+    top: 4vw;
+    left: 36.4vw;
+    position: absolute;
+    user-select: none;
+}
+#stattextContainer div
+{
+    display: inline-block;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #e45958ab;
+    padding-left: 1.8vw;
+    font-size: 1.5vw;
+    line-height: 2vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    text-align: center;
+    padding: 0 0vw 0.25vw 1vw;
+}
+.statTextButton
+{
+    border: 0.2vw solid #8e3232;
+    border-radius: 0.2vw;
+    cursor: url(img/cursor.png),pointer;
+    background-color: #1e1516c2;
+}
+.statTextButton:after
+{
+    top: -0.9vw;
+    right: -0.1vw;
+    position: relative;
+    content: "✔";
+    pointer-events: none;
+    opacity: 0;
+    font-size: 1.5vw;
+}
+.appear:after
+{
+    opacity: 1;
+}
+.fadeOut:after
+{
+    transition: opacity 3s ease-in;
+}
+.statTextViewer
+{
+    position: absolute;
+    top: 2.5vw;
+    left: 25vw;
+    width: 50vw;
+    height: 50vw;
+    background-color: black;
+    color: #f0eeef9c;
+    white-space: pre-wrap;
+    z-index: 3;
+    border: 0.3vw solid #aa4241bd;
+    overflow-y: scroll;
+    padding: 2vw;
+    line-height: 1.5vw;
+    font-size: 1vw;
+}
+.textViewOverlay
+{
+    background-color: #00000077;
+    z-index: 2;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    cursor: url(img/cursor.png),pointer;
+}
+#elRubioSafe
+{
+    position: absolute;
+    font-size: 1.5vw;
+    top: 17.6vw;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #411c1be6;
+    padding-left: 1vw;
+    right: 8.5vw;
+    cursor: url(img/cursor.png),pointer;
+}
+
+/* TUTORIAL OVERLAY STYLES */
+#overlay
+{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 3;
+    background-color: #00000077;
+    transition: opacity 0.5s linear;
+    user-select: none;
+}
+#overlay div
+{
+    padding: 0.5vw 1vw 0.5vw 1vw
+}
+#overlayClickZone
+{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    cursor: url(img/cursor.png),pointer;
+}
+.arrowLeft:before
+{
+    border-color: #ff9800b0 #ff9800b0 #ff9800b0 transparent;
+    position: absolute;
+    left: -3vw;
+    top: 0.3vw;
+    content: "";
+    border-style: solid;
+    border-width: 0 0 1.5vw 2.5vw;
+}
+.arrowLeft:after
+{
+    border-color: #ff9800b0 #ff9800b0 #ff9800b0 transparent;
+    position: absolute;
+    left: -3vw;
+    top: 1.8vw;
+    content: "";
+    border-style: solid;
+    border-width: 1.5vw 0 0 2.5vw;
+}
+.arrowRight:before
+{
+    border-color: transparent transparent transparent #ff9800b0;
+    position: absolute;
+    right: -3vw;
+    top: 0.3vw;
+    content: "";
+    border-style: solid;
+    border-width: 1.5vw 0 0 2.5vw;
+}
+.arrowRight:after
+{
+    border-color: transparent transparent transparent #ff9800b0;
+    position: absolute;
+    right: -3vw;
+    top: 1.8vw;
+    content: "";
+    border-style: solid;
+    border-width: 0 0 1.5vw 2.5vw;
+}
+.selectPrimary
+{
+    top: 35vw;
+    left: 37vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.selectDifficulty
+{
+    top: 47.1vw;
+    right: 32vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.moneyDisplay
+{
+    top: 40.9vw;
+    left: 62vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.selectTruckLocation
+{
+    top: 25.7vw;
+    left: 70.9vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.enterTakeLimit
+{
+    top: 19.3vw;
+    right: 26.1vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.enterScoreLimit
+{
+    top: 13.1vw;
+    right: 26.1vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.selectSafe
+{
+    top: 16.5vw;
+    right: 13vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.primaryDisplay
+{
+    top: 6.5vw;
+    right: 26.1vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.setHeistOptions
+{
+    top: 7.2vw;
+    left: 37.1vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.calculateCuts
+{
+    top: 25.3vw;
+    left: 37.1vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.selectLoot
+{
+    top: 20.3vw;
+    left: 37.1vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.statTextOperations
+{
+    top: 3.7vw;
+    left: 77.5vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+</style>
+</head>
+<body>
+
+    <!-- TUTORIAL OVERLAY -->
+    <div id="overlay">
+        <div class="setHeistOptions arrowLeft">Set your options here.</div>
+        <div class="primaryDisplay arrowRight">Your primary loot price.</div>
+        <div class="enterScoreLimit arrowRight">Game limits how much heist can give in total.</div>
+        <div class="selectSafe arrowRight">Include El Rubio's safe by default. Disable if you skip office safe.</div>
+        <div class="calculateCuts arrowLeft">Calculator needs player </br>cuts to maximize values.</div>
+        <div class="selectLoot arrowLeft">Select secondary loot.</div>
+        <div class="enterTakeLimit arrowRight">Player cut has limit too.</br>Also this is how much</br>highest % cut player will</br> get.</div>
+        <div class="selectTruckLocation arrowLeft">Click any truck icon to select its location.</div>
+        <div class="selectPrimary arrowLeft">Click to open loot selector, click to select primary loot.</div>
+        <div class="moneyDisplay arrowLeft">Your calculated heist take will be displayed here.</div>
+        <div class="selectDifficulty arrowRight">Toggle Normal or Hard Mode with this button.</div>
+        <div class="statTextOperations arrowLeft">Export your stat.txt and place it next to gtahaxui.exe.</div>
+        <div id="overlayClickZone"></div>
+    </div>
+
+    <!-- PAGE BACKGROUND -->
+    <div id="main"></div>
+
+    <!-- SETUP -->
+    <div id="setupContainer">
+        <div id="setupCategories">
+            <div id="approachVehiclesCategory" class="setupCategory"><div class="checkbox"></div><span>Approach Vehicles</span></div>
+            <div id="weaponCategory" class="setupCategory"><div class="checkbox"></div><span>Weapons</span></div>
+            <div id="disruptionCategory" class="setupCategory"><div class="checkbox"></div><span>Disruption</span></div>
+            <div id="equipmentCategory" class="setupCategory"><div class="checkbox"></div><span>Equipment</span></div>
+            <div id="islandLootCategory" class="setupCategory"><div class="checkbox"></div><span>Island Loot</span></div>
+            <div id="compoundLootCategory" class="setupCategory"><div class="checkbox"></div><span>Compound Loot</span></div>
+            <div id="takeCategory" class="setupCategory"><div class="checkbox"></div><span>Player Take Calculator</span></div>
+        </div>
+        <div id="approachVehiclesContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Approach Vehicles</div>
+            <div id="vehicleKosatka" class="setupCategory" bit="1"><div class="checkbox"></div><span>Submarine: Kosatka</span></div>
+            <div id="vehicleAlkonost" class="setupCategory" bit="2"><div class="checkbox"></div><span>Plane: Alkonost</span></div>
+            <div id="vehicleVelum" class="setupCategory" bit="3"><div class="checkbox"></div><span>Plane: Velum</span></div>
+            <div id="vehicleAnnihilator" class="setupCategory" bit="4"><div class="checkbox"></div><span>Helicopter: Stealth Annihilator</span></div>
+            <div id="vehiclePatrolBoat" class="setupCategory" bit="5"><div class="checkbox"></div><span>Boat: Patrol Boat</span></div>
+            <div id="vehicleLongfin" class="setupCategory" bit="6"><div class="checkbox"></div><span>Boat: Longfin</span></div>
+        </div>
+        <div id="weaponContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Weapons</div>
+            <div id="weaponAggressor" class="setupCategory" int="1"><div class="checkbox"></div><span>Aggressor</span></div>
+            <div id="weaponConspirator" class="setupCategory" int="2"><div class="checkbox"></div><span>Conspirator</span></div>
+            <div id="weaponCrackshot" class="setupCategory" int="3"><div class="checkbox"></div><span>Crackshot</span></div>
+            <div id="weaponSaboteur" class="setupCategory" int="4"><div class="checkbox"></div><span>Saboteur</span></div>
+            <div id="weaponMarksman" class="setupCategory" int="5"><div class="checkbox"></div><span>Marksman</span></div>
+            <div id="weaponSuppressors" class="setupCategory" bit="12"><div class="checkbox"></div><span>Suppressors</span></div>
+        </div>
+        <div id="disruptionContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Disruption</div>
+            <div id="disruptionWeapons" class="setupCategory" bit="13"><div class="checkbox"></div><span>Weapons</span></div>
+            <div id="disruptionArmor" class="setupCategory" bit="14"><div class="checkbox"></div><span>Armor</span></div>
+            <div id="disruptionAirSupport" class="setupCategory" bit="15"><div class="checkbox"></div><span>Air Support</span></div>
+            <div id="disruptionPoison" class="setupCategory" bit="13"><div class="checkbox"></div><span>Cutting Powder</span></div>
+        </div>
+        <div id="equipmentContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Equipment</div>
+            <div id="equipmentDemoCharges" class="setupCategory" bit="8"><div class="checkbox"></div><span>Demolution Charges</span></div>
+            <div id="equipmentTorch" class="setupCategory" bit="9"><div class="checkbox"></div><span>Cutting Torch</span></div>
+        </div>
+        <div id="islandLootContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Island Loot</div>
+            <div id="islandLootCash" class="setupCategory"><div class="checkbox"></div><span>Cash</span></div>
+            <div id="islandLootCoke" class="setupCategory"><div class="checkbox"></div><span>Coke</span></div>
+            <div id="islandLootGold" class="setupCategory"><div class="checkbox"></div><span>Gold</span></div>
+            <div id="islandLootWeed" class="setupCategory"><div class="checkbox"></div><span>Weed</span></div>
+        </div>
+        <div id="compoundLootContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Compund Loot</div>
+            <div id="compoundLootCash" class="setupCategory"><div class="checkbox"></div><span>Cash</span></div>
+            <div id="compoundLootCoke" class="setupCategory"><div class="checkbox"></div><span>Coke</span></div>
+            <div id="compoundLootGold" class="setupCategory"><div class="checkbox"></div><span>Gold</span></div>
+            <div id="compoundLootPainting" class="setupCategory"><div class="checkbox"></div><span>Painting</span></div>
+            <div id="compoundLootWeed" class="setupCategory"><div class="checkbox"></div><span>Weed</span></div>
+        </div>
+        <div id="takeContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Player Take Calculator</div>
+            <div id="teamsize" class="setupCategory"><span>Team Size</span><input class="teamSize" type="number" value="1" min="1" max="4"></div>
+            <div id="playerHost" class="setupCategory playerTake"><span>Host</span><input class="playerCut" playerid="1" type="number" value="100" min="15" max="100" step="5"></div>
+            <div id="player2" class="setupCategory playerTake hidden"><span>Player 2</span><input class="playerCut" playerid="2" type="number" value="15" min="15" max="100" step="5"></div>
+            <div id="player3" class="setupCategory playerTake hidden"><span>Player 3</span><input class="playerCut" playerid="3" type="number" value="15" min="15" max="100" step="5"></div>
+            <div id="player4" class="setupCategory playerTake hidden"><span>Player 4</span><input class="playerCut" playerid="4" type="number" value="15" min="15" max="100" step="5"></div>
+        </div>
+    </div>
+
+
+    <!-- PRIMARY LOOT SELECTOR -->
+    <div id="lootFrame">
+        <div id="lootSelector" class="hidden">
+            <div class="lootObject lootTequilla" title="Sinsimito Tequilla"></div>
+            <div class="lootObject lootNecklace" title="Ruby Necklace"></div>
+            <div class="lootObject lootBonds" title="Bearer Bonds"></div>
+            <div class="lootObject lootDiamond" title="Pink Diamond"></div>
+            <div class="lootObject lootPanther" title="Panther Statue"></div>
+            <div class="lootObject lootFiles" title="Minimadrazzo Files"></div>
+        </div>
+    </div>
+
+    <!-- PRIMARY LOOT SELECTED -->
+    <div id="lootPic"></div>
+    <div id="lootName"></div>
+    <div id="primaryName"></div>
+    <input id="primaryValue" type="text" class="moneyLimit"></div>
+
+    <!-- TOTAL TAKE LIMIT -->
+    <div id="takeLimitLabel" class="moneyLimitLabel">Total Take Limit</div>
+    <input id="takeLimit" type="text" class="moneyLimit"></div>
+
+    <!-- CUT LIMIT -->
+    <div id="cutLimitLabel" class="moneyLimitLabel">Cut Limit</div>
+    <input id="cutLimit" type="text" class="moneyLimit"></div>
+
+    <!-- el rubio safe -->
+    <div id="elRubioSafe">☑</div>
+
+    <!-- DISPLAY TRUCK ICONS -->
+    <div id="truck1" class="truckIcon"></div>
+    <div id="truck2" class="truckIcon"></div>
+    <div id="truck3" class="truckIcon"></div>
+    <div id="truck4" class="truckIcon"></div>
+    <div id="truck5" class="truckIcon"></div>
+
+    <div id="hook1" class="hookIcon" bit="0"></div>
+    <div id="hook2" class="hookIcon" bit="1"></div>
+    <div id="hook3" class="hookIcon" bit="2"></div>
+    <div id="hook4" class="hookIcon" bit="3"></div>
+
+    <div id="clothes1" class="clothesIcon" bit="4"></div>
+    <div id="clothes2" class="clothesIcon" bit="5"></div>
+    <div id="clothes3" class="clothesIcon" bit="6"></div>
+    <div id="clothes4" class="clothesIcon" bit="7"></div>
+
+    <div id="cutters1" class="cuttersIcon" bit="8"></div>
+    <div id="cutters2" class="cuttersIcon" bit="9"></div>
+    <div id="cutters3" class="cuttersIcon" bit="10"></div>
+    <div id="cutters4" class="cuttersIcon" bit="11"></div>
+
+
+    <!-- DISPLAY PLAYER CUT CALCULATOR -->
+    <div id="playerCutContainer">
+        <div class="playerMoney"><span></span><span></span></div>
+        <div class="playerMoney"><span></span><span></span></div>
+        <div class="playerMoney"><span></span><span></span></div>
+        <div class="playerMoney"><span></span><span></span></div>
+    </div>
+    <span id="totalCut"></span>
+
+    <!-- COPY AND DOWNLOAD BUTTONS -->
+    <div id="stattextContainer">
+        <div id="stattextLabel">stat.txt:</div>
+        <div id="copyButton" class="statTextButton">copy to clipboard</div>
+        <div id="downloadButton" class="statTextButton">download</div>
+        <div id="displayButton" class="statTextButton">display</div>
+    </div>
+
+    <!-- HARD MODE INDICATOR -->
+    <div id="hardModeButton" class="hardOff"></div>
+
+    <!-- stat.txt display div -->
+    <div class="statTextViewer hidden" contenteditable="true"></div>
+    <div class="textViewOverlay hidden"></div>
+</body>
+<script>
+/* CAYO PERICO HEIST SETUP DATA */
+/* RESOURCES TO GENERATE STAT.TXT FROM */
+let cayo =
+{
+    primary:
+    [
+        { name: "Minimadrazzo Files", price: 1100000, value: 4, className: "lootFiles" },
+        { name: "Sinsimito Tequilla", price: 900000, value: 0, className: "lootTequilla" },
+        { name: "Ruby Necklace", price: 1000000, value: 1, className: "lootNecklace" },
+        { name: "Bearer Bonds", price: 1100000, value: 2, className: "lootBonds" },
+        { name: "Pink Diamond", price: 1300000, value: 3, className: "lootDiamond" },
+        { name: "Panther Statue", price: 1900000, value: 5, className: "lootPanther" }
+    ],
+    secondary:
+    [
+        { name: "Cash", size: 0.25, variable: "CASH" },
+        { name: "Painting",  size: 0.5, variable: "PAINT"},
+        { name: "Weed",  size: 0.4, variable: "WEED" },
+        { name: "Coke",  size: 0.5, variable: "COKE" },
+        { name: "Gold",  size: 0.6666666, variable: "GOLD" }
+    ],
+    npcCutPercentage: 12,
+    hardModeMultiplier: 1.1,
+    defaultCutLimit: 2550000,
+    defaultTakeLimit: 10818212,
+    officeSafeMax: 100000
+}
+
+/* USER SET SETTINGS */
+/* CREATE CURRENT STAT.TXT FROM THIS */
+let settings =
+{
+    primary: 1, //cayo.primary.loot array id
+    difficulty: "normal", //cayo.difficulty
+    vehicleValue: 0,
+    takeOfficeSafe: true,
+    missionsBinary: 1+1024+2048, // gather intel + mandatory cutter + cloner
+    pois: 16384+65536 //power station + control tower
+};
+
+/* FUNCTIONALITY */
+
+/* TOGGLES HARD MODE ON DIV CLICK */
+function toggleHardMode(event)
+{
+    let button = event.target;
+
+    /* recognize button state to decide what difficulty to write
+       and which price to use */
+    let primaryValue = document.querySelector("#primaryValue");
+    if (button.className == "hardOff")
+    {
+        button.className = "hardOn";
+        settings.difficulty = "hard";
+        if (Number.isInteger(settings.primary.price))
+            primaryValue.value = (settings.primary.price * cayo.hardModeMultiplier).toLocaleString()
+    }
+    else
+    {
+        button.className = "hardOff";
+        settings.difficulty = "normal";
+        if (Number.isInteger(settings.primary.price))
+            primaryValue.value = (settings.primary.price).toLocaleString()
+    }
+
+    calculateTake();
+}
+document.querySelector("#hardModeButton").addEventListener("click", toggleHardMode); //hard mode button click event
+
+/* display loot selector */
+function showLootSelector()
+{
+    document.querySelector("#lootSelector").classList.toggle("hidden");
+}
+document.querySelector("#lootFrame").addEventListener("click", showLootSelector); //loot selector button click event
+
+/* select primary loot from selector */
+
+function selectPrimaryLoot(lootName)
+{
+    /* find by name because i was too lazy to add indexes into html */
+    cayo.primary.forEach(function(loot)
+    {
+        if (loot.name == lootName)
+            settings.primary = loot;
+    });
+
+    /* set loot display */
+    document.querySelector("#lootPic").className = settings.primary.className;
+    document.querySelector("#lootName").textContent = settings.primary.name;
+    document.querySelector("#primaryName").textContent = settings.primary.name;
+    document.querySelector("#primaryValue").value = (settings.difficulty == "normal") ? settings.primary.price.toLocaleString() : (settings.primary.price * cayo.hardModeMultiplier).toLocaleString();;
+
+    calculateTake();
+}
+function selectPrimary(event)
+{
+    selectPrimaryLoot(event.target.title);
+}
+document.querySelectorAll(".lootObject").forEach(function(lootElement) //for each loot card add select function
+{
+    lootElement.addEventListener("click", selectPrimary);
+});
+
+// select tequilla by default
+selectPrimaryLoot("Sinsimito Tequilla");
+
+/* open category on click */
+function expandSettingsContainer(event)
+{
+    document.querySelector("#setupCategories").className = "hidden";
+    document.querySelector("#" + event.target.id.replace("Category", "Container")).classList.remove("hidden");
+}
+document.querySelectorAll("#setupCategories .setupCategory").forEach(function(setupCategory)
+{
+    setupCategory.addEventListener("click", expandSettingsContainer);
+});
+
+/* make escape key close, hide, cancel or go back */
+function escapeKey(event)
+{
+    /* quit execution if non escape key is pressed */
+    if (event.keyCode != 27)
+        return;
+
+    /* hide beautiful and helpful overlay */
+    let overlay = document.querySelector("#overlay");
+    if (!overlay.classList.contains("hidden"))
+        closeOverlay(overlay); //passing element to closeElement function, I know, yuck
+
+    /* hide stattext display */
+    let textViewer = document.querySelector(".statTextViewer");
+    if (!textViewer.classList.contains("hidden"))
+        hideTextViewer(textViewer);
+
+    /* hide loot selector */
+    let lootSelector = document.querySelector("#lootSelector");
+    if (lootSelector.className != "hidden")
+        lootSelector.className = "hidden";
+
+    /* go back with heist settings*/
+    let setupCategories = document.querySelector("#setupCategories");
+    if (setupCategories.className == "hidden")
+    {
+        //find setupcategory which is not hidden
+        document.querySelectorAll(".setupCategoryContainer").forEach(function(category)
+        {
+            if (!category.classList.contains("hidden"))
+            {
+                //hide that shit and restore categories visibilty
+                category.classList.add("hidden");
+                setupCategories.classList.remove("hidden");
+            }
+        });
+    }
+}
+document.addEventListener("keydown", escapeKey); //set da event
+
+/* back button function on click */
+function goBack()
+{
+    document.querySelectorAll(".setupCategoryContainer").forEach(function(category)
+    {
+        if (!category.classList.contains("hidden"))
+            category.classList.add("hidden");
+    });
+
+    document.querySelector("#setupCategories").classList.remove("hidden");
+}
+document.querySelectorAll(".backButton").forEach(function(button)
+{
+    button.addEventListener("click", goBack);
+});
+
+/* unlock vehicles */
+function toggleVehicle(event)
+{
+    let bit = parseInt(event.target.getAttribute("bit"));
+
+    var checkbox = event.target.querySelector(".checkbox");
+    if (checkbox.classList.contains("checked"))
+    {
+        checkbox.classList.remove("checked");
+        settings.missionsBinary -= 1 << bit; //remove the vehicle bit first
+
+        // i did it single line but holy shit it was bad to read
+        if (bit == 2 || bit == 4) //if alkonost or stealth annihilator are clicked on
+        if ((settings.missionsBinary & 1 << 2) == 0 // if alkonost
+            && (settings.missionsBinary & 1 << 4) == 0) // and annihilator bits are no longer set
+        if ((settings.missionsBinary & 1 << 7) != 0) // but pilot bit is set
+            settings.missionsBinary -= 1 << 7;;; // remove pilot bit and force kill all ifs
+    }
+    else
+    {
+        checkbox.classList.add("checked");
+
+        if (bit == 2 || bit == 4) // if alkonost or annihilator are clicked on
+        if ((settings.missionsBinary & 1 << 2) == 0 // if alkonost
+            && (settings.missionsBinary & 1 << 4) == 0) // and annihilator
+        if ((settings.missionsBinary & 1 << 7) == 0) // and pilot are not set
+            settings.missionsBinary += 1 << 7;;; //set pilot bit and force kill all ifs
+
+        settings.missionsBinary += 1 << bit; //then set vehicle bit
+    }
+}
+document.querySelectorAll("#approachVehiclesContainer .setupCategory").forEach(function(vehicleElement)
+{
+    vehicleElement.addEventListener("click", toggleVehicle);
+});
+
+/* unlock equipment */
+//all on by default
+//TODO maybe: customize locations n shits
+
+/* select weapon */
+function selectWeapon(event)
+{
+    settings.weaponID = parseInt(event.target.getAttribute("int"));
+    console.log(event.target.id);
+
+    let checkbox = event.target.querySelector(".checkbox");
+    if (checkbox.classList.contains("checked"))
+    {
+        event.target.querySelector(".checkbox").classList.remove("checked");
+        settings.missionsBinary -= 1 << 12;
+
+        //suppressor bit is in the variable with points of interests
+        //yes
+        if (event.target.id == "weaponSuppressors") //toggle suppresor bit
+            settings.pois -= 1 << parseInt(event.target.getAttribute("bit"));
+    }
+    else
+    {
+        if (event.target.id != "weaponSuppressors") //do not clear weapons if suppressor is selected
+            document.querySelectorAll("#weaponContainer .setupCategory").forEach(function(weapon)
+            {
+                //do not clear suppressors when weapon is selected
+                if (weapon.id != "weaponSuppressors")
+                    weapon.querySelector(".checkbox").classList.remove("checked");
+            });
+
+        event.target.querySelector(".checkbox").classList.add("checked");
+        settings.missionsBinary += 1 << 12;
+
+        if (event.target.id == "weaponSuppressors") //toggle suppressor bit
+            settings.pois += 1 << parseInt(event.target.getAttribute("bit"));
+    }
+}
+document.querySelectorAll("#weaponContainer .setupCategory").forEach(function(weapon)
+{
+    weapon.addEventListener("click", selectWeapon);
+});
+
+/* mark disruptions */
+function markDisruption(event)
+{
+    let bit = event.target.getAttribute("bit");
+    if (event.target.querySelector(".checkbox").classList.contains("checked"))
+    {
+        delete settings[event.target.id.replace("disruption", "").toLowerCase() + "Disruption"];
+        event.target.querySelector(".checkbox").classList.remove("checked");
+
+        if (event.target.id != "disruptionPoison") // disruptionPoison has different variable bit
+            settings.missionsBinary -= 1 << parseInt(bit);
+        else //diarrhea powder is in points of interest variable, yes
+            settings.pois -= 1 << parseInt(bit);
+
+    }
+    else
+    {
+        settings[event.target.id.replace("disruption", "").toLowerCase() + "Disruption"] = 3;
+        event.target.querySelector(".checkbox").classList.add("checked");
+
+        if (event.target.id != "disruptionPoison")
+            settings.missionsBinary += 1 << parseInt(bit);
+        else
+            settings.pois += 1 << parseInt(bit);
+    }
+    console.log(event.target.id);
+}
+document.querySelectorAll("#disruptionContainer .setupCategory").forEach(function(disruption)
+{
+    disruption.addEventListener("click", markDisruption);
+});
+
+/* select equipment */
+function markEquipment(event)
+{
+    let bit = event.target.getAttribute("bit");
+
+    if (event.target.querySelector(".checkbox").classList.contains("checked"))
+    {
+        delete settings[event.target.id.replace("equipment", "").toLowerCase() + "Equipment"];
+        event.target.querySelector(".checkbox").classList.remove("checked");
+
+        if (bit)
+            settings.missionsBinary -= 1 << parseInt(bit);
+    }
+    else
+    {
+        settings[event.target.id.replace("equipment", "").toLowerCase() + "Equipment"] = true;
+        event.target.querySelector(".checkbox").classList.add("checked");
+
+        if (bit)
+            settings.missionsBinary += 1 << parseInt(bit);
+    }
+}
+document.querySelectorAll("#equipmentContainer .setupCategory").forEach(function(equip)
+{
+    equip.addEventListener("click", markEquipment);
+});
+
+/* mark island loot */
+function markIslandLoot(event)
+{
+    if (event.target.querySelector(".checkbox").classList.contains("checked"))
+    {
+        event.target.querySelector(".checkbox").classList.remove("checked");
+        delete settings.islandLoot;
+    }
+    else
+    {
+        settings.islandLoot = event.target.id.replace("islandLoot", "").toLowerCase();
+        document.querySelectorAll("#islandLootContainer .setupCategory").forEach(function(islandLoot)
+        {
+            islandLoot.querySelector(".checkbox").classList.remove("checked");
+        });
+        event.target.querySelector(".checkbox").classList.add("checked");
+    }
+}
+document.querySelectorAll("#islandLootContainer .setupCategory").forEach(function(islandLoot)
+{
+    islandLoot.addEventListener("click", markIslandLoot);
+});
+
+/* mark compound loot */
+function markCompoundLoot(event)
+{
+    if (event.target.querySelector(".checkbox").classList.contains("checked"))
+    {
+        event.target.querySelector(".checkbox").classList.remove("checked");
+
+        if (event.target.id == "compoundLootPainting") //painting is a special case
+            delete settings.painting;
+        else
+            delete settings.compoundLoot;
+    }
+    else
+    {
+        if (event.target.id != "compoundLootPainting") //painting is a special case
+        {
+            settings.compoundLoot = event.target.id.replace("compoundLoot", "").toLowerCase();
+            document.querySelectorAll("#compoundLootContainer .setupCategory:not(#compoundLootPainting)").forEach(function(compoundLoot)
+            {
+                compoundLoot.querySelector(".checkbox").classList.remove("checked");
+            });
+        }
+        else
+        {
+            settings.painting = true;
+        }
+        event.target.querySelector(".checkbox").classList.add("checked");
+    }
+}
+document.querySelectorAll("#compoundLootContainer .setupCategory").forEach(function(compoundLoot)
+{
+    compoundLoot.addEventListener("click", markCompoundLoot);
+});
+
+/* calculate loot values */
+
+/* reverses percentage from current value and known percentage */
+function reversePercentage(value, percent)
+{
+    if (percent == 100)
+        return value;
+
+    return (value * 100) / (100 - percent);
+}
+function reversePercentage2(value, percent)
+{
+    return (value / percent) * 100;
+}
+
+function getLootSize(loot)
+{
+    let size;
+    cayo.secondary.forEach(function(type)
+    {
+        if (type.name.toLowerCase() == loot)
+            size = type.size;
+    });
+
+    return size;
+}
+// different loot value for both normal and hard
+function calculateCashValue(bagLoad)
+{
+    settings.cashValue = Math.floor(bagLoad * getLootSize("cash"));
+}
+function calculateCokeValue(bagLoad)
+{
+    settings.cokeValue = Math.floor(bagLoad * getLootSize("coke"));
+}
+function calculateGoldValue(bagLoad)
+{
+    settings.goldValue = Math.floor(bagLoad * getLootSize("gold"));
+}
+function calculatePaintingValue(bagLoad)
+{
+    settings.paintingValue = Math.floor(bagLoad * getLootSize("painting"));
+}
+function calculateWeedValue(bagLoad)
+{
+    settings.weedValue = Math.floor(bagLoad * getLootSize("weed"));
+}
+
+
+function calculateTopPlayerTake()
+{
+    //get top player take
+    let topTakePlayerID = 0; //do i need this?
+    let takeValue = 0;
+    document.querySelectorAll("#takeContainer .setupCategory.playerTake:not(.hidden) input").forEach(function(input)
+    {
+        let percentageValue = parseInt(input.value);
+        if (percentageValue > takeValue)
+        {
+            takeValue = percentageValue;
+            topTakePlayerID = parseInt(input.getAttribute("playerid"));
+        }
+    });
+
+    return takeValue;
+}
+
+function calculateTake()
+{
+    let topPlayerTake = calculateTopPlayerTake();
+
+    //calculate full take based on highest percentage
+    let fullTake = Math.floor(reversePercentage(settings.cutLimit || cayo.defaultCutLimit, 100 - topPlayerTake));
+
+    //exceeding limits is bad
+    let scoreLimit = (settings.takeLimit || cayo.defaultTakeLimit);
+    if (fullTake > scoreLimit)
+        fullTake = scoreLimit;
+
+    //add pavel cut for total money
+    let score = Math.floor(reversePercentage(fullTake, cayo.npcCutPercentage));
+
+    // calculate primary price if hard mode is on or minimadrazzo files are selected(no fencing fee)
+    let primaryPrice = 0;
+    if (settings.primary) //i did it with shorthand if at first but was very ugly and i didn't like to look at it
+    {
+        if (settings.difficulty == "hard")
+            primaryPrice = Math.floor(settings.primary.price * cayo.hardModeMultiplier);
+        else
+            primaryPrice = settings.primary.price;
+
+        if (settings.takeOfficeSafe)
+            primaryPrice += cayo.officeSafeMax;
+
+        // i assumed that minimadrazzo files == no fencing fee, but apparently it's not true
+        // if (settings.primary.value == 4)
+        //     score = Math.floor(reversePercentage(fullTake, 2));
+    }
+
+    // let primaryMinusPavel = Math.floor((primaryPrice * ((100 - cayo.npcCutPercentage) * 0.01)));
+    let scoreMinusPrimary = Math.floor(score - primaryPrice);
+    // let scoreMinusPrimary = Math.floor(reversePercentage(Math.floor(fullTake - primaryPrice), cayo.npcCutPercentage));
+
+    let playerCount = parseInt(document.querySelector("#teamsize .teamSize").value);
+    let singleBagLoad = scoreMinusPrimary / playerCount;
+
+    //reduce by max office value
+    // let safeMax = Math.ceil(reversePercentage((settings.takeOfficeSafe ? (cayo.officeSafeMax / playerCount) : 0), cayo.npcCutPercentage));
+    // singleBagLoad -= safeMax;
+
+    if (singleBagLoad) //might be undefined when no primary selected, we don't want 'undefined' in settings
+    {
+        if (settings.islandLoot == "cash" || settings.compoundLoot == "cash")
+            calculateCashValue(singleBagLoad);
+
+        if (settings.islandLoot == "coke" || settings.compoundLoot == "coke")
+            calculateCokeValue(singleBagLoad);
+
+        if (settings.islandLoot == "gold" || settings.compoundLoot == "gold")
+            calculateGoldValue(singleBagLoad);
+
+        if (settings.painting || settings.painting)
+            calculatePaintingValue(singleBagLoad);
+
+        if (settings.islandLoot == "weed" || settings.compoundLoot == "weed")
+            calculateWeedValue(singleBagLoad);
+    }
+
+    let playerMonies = document.querySelectorAll(".playerMoney");
+    let takeContainers = document.querySelectorAll("#takeContainer .setupCategory.playerTake:not(.hidden)");
+    let numContainers = takeContainers.length;
+
+    for (var i = 0, l = 4; i < l; i++)
+    {
+        let playerMoni = playerMonies[i];
+        let playerName = playerMoni.querySelector("span:first-child");
+        let moniValue = playerMoni.querySelector("span:last-child");
+
+        let takeContainer = takeContainers[i];
+
+        if (i < numContainers)
+        {
+            let name = takeContainer.querySelector("span");
+            let percentage = parseInt(takeContainer.querySelector("input").value);
+            playerName.textContent = name.textContent;
+            moniValue.textContent = formatNumber(Math.floor(fullTake * (percentage * 0.01)).toString()).string;
+        }
+        else
+        {
+            playerName.textContent = "";
+            moniValue.textContent = "";
+        }
+    }
+
+    document.querySelector("#totalCut").textContent = formatNumber(fullTake.toString()).string;
+
+    //don't want to need this anymore but i might
+    console.log("single bag load", singleBagLoad);
+    // console.log("rubios office safe max", safeMax);
+    console.log("max take", settings.cutLimit || cayo.defaultCutLimit);
+    console.log("top player take", topPlayerTake);
+    console.log("full take", fullTake);
+    console.log("score", score);
+    console.log("primary price", primaryPrice);
+    // console.log("primary minus pavel", primaryMinusPavel);
+    console.log("score minus primary", scoreMinusPrimary);
+    console.log("gold value", settings.goldValue);
+    console.log("painting value", settings.paintingValue);
+}
+
+/* set team size*/
+function teamSizeChange(event)
+{
+    let playerTakeElements = document.querySelectorAll("#takeContainer .setupCategory.playerTake");
+    let maxTeamSize = playerTakeElements.length;
+    settings.teamSize = parseInt(event.target.value);
+
+    for (var currentPlayer = 1; currentPlayer < maxTeamSize; currentPlayer++)
+    {
+        if (currentPlayer < settings.teamSize)
+        {
+            let currentPlayerElement = playerTakeElements[currentPlayer];
+            currentPlayerElement.classList.remove("hidden");
+            currentPlayerElement.querySelector(".playerCut").value = 15;
+        }
+        else
+        {
+            playerTakeElements[currentPlayer].classList.add("hidden");
+        }
+    }
+
+    playerTakeElements[0].querySelector(".playerCut").value = 100 - ((settings.teamSize - 1) * 15);
+
+    calculateTake();
+}
+document.querySelector("#teamsize input").addEventListener("input", teamSizeChange);
+
+/* player take % */
+function updatePlayerTake(event)
+{
+    let sum = 0;
+    let sumOthers = 0;
+    document.querySelectorAll("#takeContainer .setupCategory.playerTake:not(.hidden) input").forEach(function(input)
+    {
+        let value = parseInt(input.value);
+        if (event.target != input)
+            sumOthers += value;
+        sum += value;
+    });
+
+    if (sum >= 100)
+    {
+        event.target.value = 100 - sumOthers;
+    }
+
+    calculateTake();
+}
+document.querySelectorAll("#takeContainer .setupCategory.playerTake input").forEach(function(input)
+{
+    input.addEventListener("input", updatePlayerTake);
+});
+
+function formatNumber(input)
+{
+    let number = input.replace(/[\D\s\._\-]+/g, "");
+    number = number ? parseInt(number, 10) : 0;
+    return {"string" : number.toLocaleString(), "int" : number};
+}
+
+/* team mate cut limit */
+function formatCutLimit(element)
+{
+    let number = formatNumber(element.value);
+    element.value = number.string;
+    settings.cutLimit = number.int;
+}
+function updateCutLimit(event)
+{
+    formatCutLimit(event.target);
+    calculateTake();
+}
+let cutLimit = document.querySelector("#cutLimit");
+cutLimit.addEventListener("input", updateCutLimit);
+cutLimit.value = cayo.defaultCutLimit;
+formatCutLimit(cutLimit);
+
+/* total take hard limit */
+function formatTakeLimit(element)
+{
+    let number = formatNumber(element.value);
+    element.value = number.string;
+    settings.takeLimit = number.int;
+}
+function updateTakeLimit(event)
+{
+    formatCutLimit(event.target);
+    calculateTake();
+}
+let takeLimit = document.querySelector("#takeLimit");
+takeLimit.addEventListener("input", updateTakeLimit);
+takeLimit.value = cayo.defaultTakeLimit;
+formatTakeLimit(takeLimit);
+
+/* beware of copy-paste monster*/
+/* select supply truck location */
+function selectSupplyTruckLocation(event)
+{
+    let target = event.target;
+
+    settings.supplyTruckLocation = parseInt(target.id.replace("truck", ""));
+
+    if (target.classList.contains("truckOn")) //disable truck selection
+    {
+        settings.pois -= 1 << 15;
+        delete settings.supplyTruckLocation;
+        target.classList.remove("truckOn");
+    }
+    else
+    {
+        let isTruckSelected = false;
+        document.querySelectorAll(".truckIcon").forEach(function(truckElement)
+        {
+            if (truckElement.classList.contains("truckOn"))
+                isTruckSelected = true;
+            truckElement.classList.remove("truckOn");
+        });
+
+        //do not add bit if truck is already selected
+        //cause you're just switching places of already enabled truck
+        if (!isTruckSelected)
+            settings.pois += 1 << 15;
+
+        target.classList.add("truckOn");
+    }
+}
+document.querySelectorAll(".truckIcon").forEach(function(truckElement)
+{
+    truckElement.addEventListener("click", selectSupplyTruckLocation);
+});
+
+//generic mark function
+function markMyPOIsBoys(event, type)
+{
+    let target = event.target;
+    let bit = parseInt(event.target.getAttribute("bit"));
+
+    if (target.classList.contains(type + "On")) //disable truck selection
+    {
+        settings.pois -= 1 << bit;
+        target.classList.remove(type + "On");
+    }
+    else
+    {
+        settings.pois += 1 << bit;
+        target.classList.add(type + "On");
+    }
+}
+//select grappling hook locations
+function selectGrapplingHookLocation(event)
+{
+    markMyPOIsBoys(event, "hook");
+}
+document.querySelectorAll(".hookIcon").forEach(function(hookElement)
+{
+    hookElement.addEventListener("click", selectGrapplingHookLocation);
+});
+//select guard clothes locations
+function selectGuardClothesLocation(event)
+{
+    markMyPOIsBoys(event, "clothes");
+}
+document.querySelectorAll(".clothesIcon").forEach(function(clothesElement)
+{
+    clothesElement.addEventListener("click", selectGuardClothesLocation);
+});
+//select bolt cutters location
+function selectBoltCuttersLocation(event)
+{
+    markMyPOIsBoys(event, "cutters");
+}
+document.querySelectorAll(".cuttersIcon").forEach(function(cuttersElement)
+{
+    cuttersElement.addEventListener("click", selectBoltCuttersLocation);
+});
+
+/* edit primary value */
+function formatPrimaryPrice(element)
+{
+    let number = formatNumber(element.value);
+    element.value = number.string;
+    if (settings.difficulty == "hard")
+        settings.primary.price = Math.floor(number.int / cayo.hardModeMultiplier);
+    else
+        settings.primary.price = number.int;
+}
+function updatePrimaryPrive(event)
+{
+    formatPrimaryPrice(event.target);
+    calculateTake();
+}
+document.querySelector("#primaryValue").addEventListener("input", updatePrimaryPrive);
+
+function toggleOfficeSafe(event)
+{
+    let target = event.target;
+    if (target.textContent == "☑")
+    {
+        target.textContent = "☐";
+        delete settings.takeOfficeSafe;
+    }
+    else
+    {
+        target.textContent = "☑";
+        settings.takeOfficeSafe = true;
+    }
+    calculateTake();
+}
+document.querySelector("#elRubioSafe").addEventListener("click", toggleOfficeSafe);
+
+/* generate stat.txt string */
+function generateStattext()
+{
+    var s = ["INT32"];
+
+    /* $MPx_H4CNF_BS_GEN
+    grappling hooks
+    (bits are left shift value)
+    int 1, bit 0 https://i.imgur.com/i9PpBqb.jpeg
+    int 2, bit 1 https://i.imgur.com/XnTJNZ0.jpeg
+    int 4, bit 2 https://i.imgur.com/mD1CnIH.jpg
+    int 8, bit 3 https://i.imgur.com/DIRqJeO.jpeg
+
+    guard clothes
+    int 16, bit 4 https://i.imgur.com/TOToYmD.jpg
+    int 32, bit 5 https://i.imgur.com/F5QICaa.jpg
+    int 64, bit 6 https://i.imgur.com/o7ybn3e.jpeg
+    int 128, bit 7 https://i.imgur.com/TnmehzB.jpeg
+
+    bolt cutters
+    int 256, bit 8 https://i.imgur.com/vp2dZ8h.jpg
+    int 512, bit 9 https://i.imgur.com/uDVoRVY.jpg
+    int 1024, bit 10 https://i.imgur.com/nRQUIAb.jpg
+    int 2048, bit 11 https://i.imgur.com/quloOFA.jpg
+
+    suppressors
+    int 4096, bit 12
+
+    cutting powder
+    int 8192, bit 13
+
+    power station
+    int 16384, bit 14 https://i.imgur.com/BwTegxb.jpg
+
+    supply truck
+    int 32768, bit 15 https://i.imgur.com/vScO6P8.jpg
+
+    control tower
+    int 65536, bit 16 https://i.imgur.com/XZ6WiHV.jpg
+    */
+    s.push("$MPx_H4CNF_BS_GEN");
+    s.push(settings.pois);
+
+    s.push("$MPx_H4CNF_BS_ENTR"); //TODO binary values for each entry point
+    s.push("63");
+
+    s.push("$MPx_H4CNF_BS_ABIL"); //TODO binary values for each support option
+    s.push("63");
+
+    if (settings.weaponID)
+    {
+        s.push("$MPx_H4CNF_WEAPONS");
+        s.push(settings.weaponID.toString());
+    }
+
+    if (settings.weaponsDisruption) //weapon disruption, full power (int 3)
+    {
+        s.push("$MPx_H4CNF_WEP_DISRP");
+        s.push(settings.weaponsDisruption.toString());
+    }
+
+    if (settings.armorDisruption) //armor disruption
+    {
+        s.push("$MPx_H4CNF_ARM_DISRP");
+        s.push(settings.armorDisruption.toString());
+    }
+
+    if (settings.airsupportDisruption) //air support disruption
+    {
+        s.push("$MPx_H4CNF_HEL_DISRP");
+        s.push(settings.airsupportDisruption.toString());
+    }
+
+    if (settings.primary) //primary loot
+    {
+        s.push("$MPx_H4CNF_TARGET");
+        s.push(settings.primary.value.toString());
+    }
+
+    if ((settings.pois & 9) != 0 || (settings.pois & 10) != 0 || (settings.pois & 11) != 0 || (settings.pois & 12) != 0) //mark bolt cutter locations
+    {
+        s.push("$MPx_H4CNF_BOLTCUT");
+        s.push("4424");
+    }
+
+    if ((settings.pois & 5) != 0 || (settings.pois & 6) != 0 || (settings.pois & 7) != 0 || (settings.pois & 8) != 0) //mark uniform locations
+    {
+        s.push("$MPx_H4CNF_UNIFORM");
+        s.push("5256");
+    }
+
+    if ((settings.pois & 1) != 0 || (settings.pois & 2) != 0 || (settings.pois & 3) != 0 || (settings.pois & 4) != 0) //mark hook locations
+    {
+        s.push("$MPx_H4CNF_GRAPPEL");
+        s.push("5156");
+    }
+
+    if (settings.supplyTruckLocation) //select truck location
+    {
+        s.push("$MPx_H4CNF_TROJAN");
+        s.push(settings.supplyTruckLocation.toString());
+    }
+
+    //unlock all approaches i think
+    s.push("$MPx_H4CNF_APPROACH");
+    s.push("-1");
+
+    //secondary loot enabled or not
+    s.push("$MPx_H4LOOT_CASH_I");
+    s.push(settings.islandLoot == "cash" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_CASH_C");
+    s.push(settings.compoundLoot == "cash" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_WEED_I");
+    s.push(settings.islandLoot == "weed" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_WEED_C");
+    s.push(settings.compoundLoot == "weed" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_COKE_I");
+    s.push(settings.islandLoot == "coke" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_COKE_C");
+    s.push(settings.compoundLoot == "coke" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_GOLD_I");
+    s.push(settings.islandLoot == "gold" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_GOLD_C");
+    s.push(settings.compoundLoot == "gold" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_PAINT");
+    s.push(settings.painting ? "-1" : "0");
+
+    //set difficulty
+    s.push("$MPx_H4_PROGRESS");
+    if (settings.difficulty == "hard")
+        s.push("131055");
+    else
+        s.push("124271");
+
+    //set cash value
+    if (settings.cashValue)
+    {
+        s.push("$MPx_H4LOOT_CASH_V");
+        s.push(settings.cashValue.toString());
+    }
+
+    //set coke value
+    if (settings.cokeValue)
+    {
+        s.push("$MPx_H4LOOT_COKE_V");
+        s.push(settings.cokeValue.toString());
+    }
+
+    //set gold value
+    if (settings.goldValue)
+    {
+        s.push("$MPx_H4LOOT_GOLD_V");
+        s.push(settings.goldValue.toString());
+    }
+
+    //set painting value
+    if (settings.paintingValue)
+    {
+        s.push("$MPx_H4LOOT_PAINT_V");
+        s.push(settings.paintingValue.toString());
+    }
+
+    //set painting value
+    if (settings.weedValue)
+    {
+        s.push("$MPx_H4LOOT_WEED_V");
+        s.push(settings.weedValue.toString());
+    }
+
+    //secondary loot scoped or not
+    s.push("$MPx_H4LOOT_CASH_I_SCOPED");
+    s.push(settings.islandLoot == "cash" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_CASH_C_SCOPED");
+    s.push(settings.compoundLoot == "cash" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_WEED_I_SCOPED");
+    s.push(settings.islandLoot == "weed" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_WEED_C_SCOPED");
+    s.push(settings.compoundLoot == "weed" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_COKE_I_SCOPED");
+    s.push(settings.islandLoot == "coke" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_COKE_C_SCOPED");
+    s.push(settings.compoundLoot == "coke" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_GOLD_I_SCOPED");
+    s.push(settings.islandLoot == "gold" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_GOLD_C_SCOPED");
+    s.push(settings.compoundLoot == "gold" ? "-1" : "0");
+    s.push("$MPx_H4LOOT_PAINT_SCOPED");
+    s.push(settings.painting ? "-1" : "0");
+
+    //no idea what this does, can guess by the name though
+    s.push("$MPx_H4_MISSIONS");
+    s.push(settings.missionsBinary.toString());
+
+    s.push("$MPx_H4_PLAYTHROUGH_STATUS");
+    s.push("40000");
+
+    return s.join("\n");
+}
+
+function downloadTxt()
+{
+    calculateTake();
+
+    //create data blob
+    var blob = new Blob([generateStattext()], {type: 'text/csv'});
+
+    //download data blob
+    if (window.navigator.msSaveOrOpenBlob) //with api
+    {
+        window.navigator.msSaveBlob(blob, "stat.txt");
+    }
+    else //without api
+    {
+        var element = window.document.createElement('a');
+        element.href = window.URL.createObjectURL(blob);
+        element.download = "stat.txt";
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    }
+}
+
+function copyToClipboard()
+{
+    calculateTake();
+
+    //create invisible textarea to copy
+    var textArea = document.createElement("textarea");
+    textArea.className = "invisibleTextarea";
+    textArea.value = generateStattext();
+    document.body.appendChild(textArea);
+
+    //copy
+    textArea.focus();
+    textArea.select();
+    document.execCommand('copy')
+
+    //remove witness
+    document.body.removeChild(textArea);
+}
+/* do something with stat.txt buttons */
+function fadeDatShiet(element)
+{
+    element.classList.add("appear");
+    element.classList.remove("fadeOut");
+    setTimeout(function(element){element.classList.add("appear");}, 0, element);
+    setTimeout(function(element)
+    {
+        element.classList.add("fadeOut");
+        element.classList.remove("appear");
+    }, 0, element);
+}
+
+function copyButton(event)
+{
+    copyToClipboard();
+    let button = document.querySelector("#copyButton");
+    fadeDatShiet(button);
+}
+document.querySelector("#copyButton").addEventListener("click", copyButton);
+
+function downloadButton(event)
+{
+    downloadTxt();
+    let button = document.querySelector("#downloadButton");
+    fadeDatShiet(button);
+}
+document.querySelector("#downloadButton").addEventListener("click", downloadButton);
+
+function hideTextViewer()
+{
+    document.querySelector(".statTextViewer").classList.add("hidden");
+    document.querySelector(".textViewOverlay").classList.add("hidden");
+}
+document.querySelector(".textViewOverlay").addEventListener("click", hideTextViewer);
+
+// handle display button
+function displayButton(event)
+{
+    calculateTake();
+
+    let viewerOverlay = document.querySelector(".textViewOverlay");
+    let viewer = document.querySelector(".statTextViewer");
+    viewer.textContent = generateStattext();
+
+    viewerOverlay.classList.remove("hidden");
+    viewer.classList.remove("hidden");
+}
+document.querySelector("#displayButton").addEventListener("click", displayButton);
+
+/* close overlay on click */
+function closeOverlay(element)
+{
+    element.style.opacity = "0";
+    document.querySelector("#overlayClickZone").removeEventListener("click", closeOverlay);
+    try
+    {
+        setTimeout(function() { element.classList.add("hidden") }, 500);
+    } catch {}
+}
+function clickOverlay(event)
+{
+    closeOverlay(event.target.parentNode);
+}
+document.querySelector("#overlayClickZone").addEventListener("click", clickOverlay);
+</script>
+</html>
