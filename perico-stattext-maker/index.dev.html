@@ -1,4 +1,5 @@
 <html>
+    <title>佩里克岛Stat.txt导入代码生成器 Dev</title>
 <head>
 <style>
 body
@@ -768,18 +769,18 @@ body
 
     <!-- TUTORIAL OVERLAY -->
     <div id="overlay">
-        <div class="setHeistOptions arrowLeft">Set your options here.</div>
-        <div class="primaryDisplay arrowRight">Your primary loot price.</div>
-        <div class="enterScoreLimit arrowRight">Game limits how much heist can give in total.</div>
-        <div class="selectSafe arrowRight">Include El Rubio's safe by default. Disable if you skip office safe.</div>
-        <div class="calculateCuts arrowLeft">Calculator needs player </br>cuts to maximize values.</div>
-        <div class="selectLoot arrowLeft">Select secondary loot.</div>
-        <div class="enterTakeLimit arrowRight">Player cut has limit too.</br>Also this is how much</br>highest % cut player will</br> get.</div>
-        <div class="selectTruckLocation arrowLeft">Click any truck icon to select its location.</div>
-        <div class="selectPrimary arrowLeft">Click to open loot selector, click to select primary loot.</div>
-        <div class="moneyDisplay arrowLeft">Your calculated heist take will be displayed here.</div>
-        <div class="selectDifficulty arrowRight">Toggle Normal or Hard Mode with this button.</div>
-        <div class="statTextOperations arrowLeft">Export your stat.txt and place it next to gtahaxui.exe.</div>
+        <div class="setHeistOptions arrowLeft">在这里设置选项</div>
+        <div class="primaryDisplay arrowRight">主要目标价值</div>
+        <div class="enterScoreLimit arrowRight">游戏限制了抢劫总共能给多少钱</div>
+        <div class="selectSafe arrowRight">默认情况下包括El Rubio保险箱。如果跳过办公室保险箱，请取消勾选</div>
+        <div class="calculateCuts arrowLeft">计算玩家数量</br>削减才能最大化价值</div>
+        <div class="selectLoot arrowLeft">选择次要目标</div>
+        <div class="enterTakeLimit arrowRight">玩家收益也有限制。</br>同样，这是最高百分比的玩家削减收益</div>
+        <div class="selectTruckLocation arrowLeft">单击任何卡车图标以选择其位置</div>
+        <div class="selectPrimary arrowLeft">打开主要目标选择器，单击图片以选择主要目标</div>
+        <div class="moneyDisplay arrowLeft">你计算的抢劫收益将在这里显示</div>
+        <div class="selectDifficulty arrowRight">使用此按钮切换普通或困难模式</div>
+        <div class="statTextOperations arrowLeft">导入你的stat.txt文件，并放到gtahaxui.exe同一目录下</div>
         <div id="overlayClickZone"></div>
     </div>
 
@@ -789,66 +790,69 @@ body
     <!-- SETUP -->
     <div id="setupContainer">
         <div id="setupCategories">
-            <div id="approachVehiclesCategory" class="setupCategory"><div class="checkbox"></div><span>Approach Vehicles</span></div>
-            <div id="weaponCategory" class="setupCategory"><div class="checkbox"></div><span>Weapons</span></div>
-            <div id="disruptionCategory" class="setupCategory"><div class="checkbox"></div><span>Disruption</span></div>
-            <div id="equipmentCategory" class="setupCategory"><div class="checkbox"></div><span>Equipment</span></div>
-            <div id="islandLootCategory" class="setupCategory"><div class="checkbox"></div><span>Island Loot</span></div>
-            <div id="compoundLootCategory" class="setupCategory"><div class="checkbox"></div><span>Compound Loot</span></div>
-            <div id="takeCategory" class="setupCategory"><div class="checkbox"></div><span>Player Take Calculator</span></div>
+            <div id="approachVehiclesCategory" class="setupCategory"><div class="checkbox"></div><span>接近载具</span></div>
+            <div id="weaponCategory" class="setupCategory"><div class="checkbox"></div><span>武器装备</span></div>
+            <div id="disruptionCategory" class="setupCategory"><div class="checkbox"></div><span>干扰</span></div>
+            <div id="equipmentCategory" class="setupCategory"><div class="checkbox"></div><span>装备</span></div>
+            <div id="islandLootCategory" class="setupCategory"><div class="checkbox"></div><span>岛屿次要目标</span></div>
+            <div id="compoundLootCategory" class="setupCategory"><div class="checkbox"></div><span>复合次要目标</span></div>
+            <div id="takeCategory" class="setupCategory"><div class="checkbox"></div><span>玩家分红计算</span></div>
         </div>
         <div id="approachVehiclesContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; Approach Vehicles</div>
-            <div id="vehicleKosatka" class="setupCategory" bit="1"><div class="checkbox"></div><span>Submarine: Kosatka</span></div>
-            <div id="vehicleAlkonost" class="setupCategory" bit="2"><div class="checkbox"></div><span>Plane: Alkonost</span></div>
-            <div id="vehicleVelum" class="setupCategory" bit="3"><div class="checkbox"></div><span>Plane: Velum</span></div>
-            <div id="vehicleAnnihilator" class="setupCategory" bit="4"><div class="checkbox"></div><span>Helicopter: Stealth Annihilator</span></div>
-            <div id="vehiclePatrolBoat" class="setupCategory" bit="5"><div class="checkbox"></div><span>Boat: Patrol Boat</span></div>
-            <div id="vehicleLongfin" class="setupCategory" bit="6"><div class="checkbox"></div><span>Boat: Longfin</span></div>
+            <div class="backButton"> &lt; 接近载具</div>
+            <div id="vehicleKosatka" class="setupCategory" bit="1"><div class="checkbox"></div><span>潜水艇：虎鲸</span></div>
+            <div id="vehicleAlkonost" class="setupCategory" bit="2"><div class="checkbox"></div><span>飞机：阿尔科诺斯特</span></div>
+            <div id="vehicleVelum" class="setupCategory" bit="3"><div class="checkbox"></div><span>飞机：梅杜莎</span></div>
+            <div id="vehicleAnnihilator" class="setupCategory" bit="4"><div class="checkbox"></div><span>直升机：隐形歼灭者</span></div>
+            <div id="vehiclePatrolBoat" class="setupCategory" bit="5"><div class="checkbox"></div><span>船只：巡逻艇</span></div>
+            <div id="vehicleLongfin" class="setupCategory" bit="6"><div class="checkbox"></div><span>船只：长鳍</span></div>
         </div>
         <div id="weaponContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; Weapons</div>
-            <div id="weaponAggressor" class="setupCategory" int="1"><div class="checkbox"></div><span>Aggressor</span></div>
-            <div id="weaponConspirator" class="setupCategory" int="2"><div class="checkbox"></div><span>Conspirator</span></div>
-            <div id="weaponCrackshot" class="setupCategory" int="3"><div class="checkbox"></div><span>Crackshot</span></div>
-            <div id="weaponSaboteur" class="setupCategory" int="4"><div class="checkbox"></div><span>Saboteur</span></div>
-            <div id="weaponMarksman" class="setupCategory" int="5"><div class="checkbox"></div><span>Marksman</span></div>
-            <div id="weaponSuppressors" class="setupCategory" bit="12"><div class="checkbox"></div><span>Suppressors</span></div>
+            <div class="backButton"> &lt; 武器装备</div>
+            <div id="weaponAggressor" class="setupCategory" int="1"><div class="checkbox"></div><span>侵略者</span></div>
+            <div id="weaponConspirator" class="setupCategory" int="2"><div class="checkbox"></div><span>阴谋者</span></div>
+            <div id="weaponCrackshot" class="setupCategory" int="3"><div class="checkbox"></div><span>神枪手</span></div>
+            <div id="weaponSaboteur" class="setupCategory" int="4"><div class="checkbox"></div><span>破坏者</span></div>
+            <div id="weaponMarksman" class="setupCategory" int="5"><div class="checkbox"></div><span>神射手</span></div>
+            <!-- <div id="weaponSuppressors" class="setupCategory"><div class="checkbox checked"></div><span>Suppressors</span></div> -->
         </div>
         <div id="disruptionContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; Disruption</div>
-            <div id="disruptionWeapons" class="setupCategory" bit="13"><div class="checkbox"></div><span>Weapons</span></div>
-            <div id="disruptionArmor" class="setupCategory" bit="14"><div class="checkbox"></div><span>Armor</span></div>
-            <div id="disruptionAirSupport" class="setupCategory" bit="15"><div class="checkbox"></div><span>Air Support</span></div>
-            <div id="disruptionPoison" class="setupCategory" bit="13"><div class="checkbox"></div><span>Cutting Powder</span></div>
+            <div class="backButton"> &lt; 干扰</div>
+            <div id="disruptionWeapons" class="setupCategory" bit="13"><div class="checkbox"></div><span>武器</span></div>
+            <div id="disruptionArmor" class="setupCategory" bit="14"><div class="checkbox"></div><span>防弹衣</span></div>
+            <div id="disruptionAirSupport" class="setupCategory" bit="15"><div class="checkbox"></div><span>空中支援</span></div>
+            <div id="disruptionPoison" class="setupCategory"><div class="checkbox"></div><span>复合粉</span></div>
         </div>
         <div id="equipmentContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; Equipment</div>
-            <div id="equipmentDemoCharges" class="setupCategory" bit="8"><div class="checkbox"></div><span>Demolution Charges</span></div>
-            <div id="equipmentTorch" class="setupCategory" bit="9"><div class="checkbox"></div><span>Cutting Torch</span></div>
+            <div class="backButton"> &lt; 装备</div>
+            <div id="equipmentDemoCharges" class="setupCategory" bit="8"><div class="checkbox"></div><span>倒卖费用</span></div>
+            <div id="equipmentTorch" class="setupCategory" bit="9"><div class="checkbox"></div><span>割炬</span></div>
+            <div id="equipmentBoltcutters" class="setupCategory"><div class="checkbox"></div><span>螺栓切割器</span></div>
+            <div id="equipmentUniform" class="setupCategory"><div class="checkbox"></div><span>保安制服</span></div>
+            <div id="equipmentGrappling" class="setupCategory"><div class="checkbox"></div><span>抓钩</span></div>
         </div>
         <div id="islandLootContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; Island Loot</div>
-            <div id="islandLootCash" class="setupCategory"><div class="checkbox"></div><span>Cash</span></div>
-            <div id="islandLootCoke" class="setupCategory"><div class="checkbox"></div><span>Coke</span></div>
-            <div id="islandLootGold" class="setupCategory"><div class="checkbox"></div><span>Gold</span></div>
-            <div id="islandLootWeed" class="setupCategory"><div class="checkbox"></div><span>Weed</span></div>
+            <div class="backButton"> &lt; 岛屿次要目标</div>
+            <div id="islandLootCash" class="setupCategory"><div class="checkbox"></div><span>现金</span></div>
+            <div id="islandLootCoke" class="setupCategory"><div class="checkbox"></div><span>可可</span></div>
+            <div id="islandLootGold" class="setupCategory"><div class="checkbox"></div><span>黄金</span></div>
+            <div id="islandLootWeed" class="setupCategory"><div class="checkbox"></div><span>大麻</span></div>
         </div>
         <div id="compoundLootContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; Compund Loot</div>
-            <div id="compoundLootCash" class="setupCategory"><div class="checkbox"></div><span>Cash</span></div>
-            <div id="compoundLootCoke" class="setupCategory"><div class="checkbox"></div><span>Coke</span></div>
-            <div id="compoundLootGold" class="setupCategory"><div class="checkbox"></div><span>Gold</span></div>
-            <div id="compoundLootPainting" class="setupCategory"><div class="checkbox"></div><span>Painting</span></div>
-            <div id="compoundLootWeed" class="setupCategory"><div class="checkbox"></div><span>Weed</span></div>
+            <div class="backButton"> &lt; 复合次要目标</div>
+            <div id="compoundLootCash" class="setupCategory"><div class="checkbox"></div><span>现金</span></div>
+            <div id="compoundLootCoke" class="setupCategory"><div class="checkbox"></div><span>可可</span></div>
+            <div id="compoundLootGold" class="setupCategory"><div class="checkbox"></div><span>黄金</span></div>
+            <div id="compoundLootPainting" class="setupCategory"><div class="checkbox"></div><span>画作</span></div>
+            <div id="compoundLootWeed" class="setupCategory"><div class="checkbox"></div><span>大麻</span></div>
         </div>
         <div id="takeContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; Player Take Calculator</div>
-            <div id="teamsize" class="setupCategory"><span>Team Size</span><input class="teamSize" type="number" value="1" min="1" max="4"></div>
-            <div id="playerHost" class="setupCategory playerTake"><span>Host</span><input class="playerCut" playerid="1" type="number" value="100" min="15" max="100" step="5"></div>
-            <div id="player2" class="setupCategory playerTake hidden"><span>Player 2</span><input class="playerCut" playerid="2" type="number" value="15" min="15" max="100" step="5"></div>
-            <div id="player3" class="setupCategory playerTake hidden"><span>Player 3</span><input class="playerCut" playerid="3" type="number" value="15" min="15" max="100" step="5"></div>
-            <div id="player4" class="setupCategory playerTake hidden"><span>Player 4</span><input class="playerCut" playerid="4" type="number" value="15" min="15" max="100" step="5"></div>
+            <div class="backButton"> &lt; 玩家分红计算</div>
+            <div id="teamsize" class="setupCategory"><span>人数</span><input class="teamSize" type="number" value="1" min="1" max="4"></div>
+            <div id="playerHost" class="setupCategory playerTake"><span>房主</span><input class="playerCut" playerid="1" type="number" value="100" min="15" max="100" step="5"></div>
+            <div id="player2" class="setupCategory playerTake hidden"><span>玩家2</span><input class="playerCut" playerid="2" type="number" value="15" min="15" max="100" step="5"></div>
+            <div id="player3" class="setupCategory playerTake hidden"><span>玩家3</span><input class="playerCut" playerid="3" type="number" value="15" min="15" max="100" step="5"></div>
+            <div id="player4" class="setupCategory playerTake hidden"><span>玩家4</span><input class="playerCut" playerid="4" type="number" value="15" min="15" max="100" step="5"></div>
         </div>
     </div>
 
@@ -872,11 +876,11 @@ body
     <input id="primaryValue" type="text" class="moneyLimit"></div>
 
     <!-- TOTAL TAKE LIMIT -->
-    <div id="takeLimitLabel" class="moneyLimitLabel">Total Take Limit</div>
+    <div id="takeLimitLabel" class="moneyLimitLabel">总获利限额</div>
     <input id="takeLimit" type="text" class="moneyLimit"></div>
 
     <!-- CUT LIMIT -->
-    <div id="cutLimitLabel" class="moneyLimitLabel">Cut Limit</div>
+    <div id="cutLimitLabel" class="moneyLimitLabel">收入限制</div>
     <input id="cutLimit" type="text" class="moneyLimit"></div>
 
     <!-- el rubio safe -->
@@ -917,9 +921,9 @@ body
     <!-- COPY AND DOWNLOAD BUTTONS -->
     <div id="stattextContainer">
         <div id="stattextLabel">stat.txt:</div>
-        <div id="copyButton" class="statTextButton">copy to clipboard</div>
-        <div id="downloadButton" class="statTextButton">download</div>
-        <div id="displayButton" class="statTextButton">display</div>
+        <div id="copyButton" class="statTextButton">复制到剪切板</div>
+        <div id="downloadButton" class="statTextButton">下载</div>
+        <div id="displayButton" class="statTextButton">显示</div>
     </div>
 
     <!-- HARD MODE INDICATOR -->
