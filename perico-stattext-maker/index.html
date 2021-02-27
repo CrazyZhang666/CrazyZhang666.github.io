@@ -1,7 +1,8 @@
 <html>
-    <title>佩里克岛Stat.txt导入代码生成器代码生成器</title>
+    <title>佩里克岛stat.txt导入代码自定义</title>
 <head>
 <style>
+/* MAIN STYLES*/
 body
 {
     margin: 0;
@@ -9,6 +10,7 @@ body
     height: 100vh;
     background-color: black;
     overflow: hidden;
+    transition: transform 0.1s ease-in-out;
 }
 #main
 {
@@ -19,6 +21,8 @@ body
     background-size: 100% 100%;
     position: absolute;
 }
+
+/* HARD MODE TOGGLE BUTTONS */
 #hardModeButton
 {
     background-repeat: no-repeat;
@@ -40,6 +44,7 @@ body
     background-image: url(img/hard_mode_off.png);
 
 }
+/* PRIMARY LOOT SELECTOR */
 #lootFrame
 {
     z-index: 2;
@@ -51,7 +56,7 @@ body
     background-repeat: no-repeat;
     background-size: 100% 100%;
     position: absolute;
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
     overflow: hidden;
 }
 #lootPic
@@ -103,6 +108,7 @@ body
     width: 65% !important;
     transform: perspective(0) rotateY(0deg);
 }
+.lootDefault { background-image: url(img/primary_loot/default.gif); }
 .lootTequilla { background-image: url(img/primary_loot/tequilla.png); }
 .lootNecklace { background-image: url(img/primary_loot/necklace.png); }
 .lootBonds { background-image: url(img/primary_loot/bonds.png); }
@@ -122,7 +128,7 @@ body
     border-radius: 2px;
     display: inline-block;
     margin-right: -15%;
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
     margin-bottom: 3%;
 }
 .lootObject:hover
@@ -134,18 +140,30 @@ body
     /* height: 65%; */
     transform: perspective(0) rotateY(0deg);
 }
+
+/*  GENERAL HIDDEN CLASS */
 .hidden
 {
     display: none;
 }
 
+/* PRIMARY VALUE */
+#moneyLimits
+{
+    background-image: url(img/prices_frames.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    width: 14.9vw;
+    height: 17.9vw;
+    top: 4.7vw;
+    right: 7.7vw;
+}
 #primaryName
 {
     position: absolute;
     width: 14.7vw;
     height: 2.3vw;
-    top: 4.7vw;
-    right: 7.8vw;
     text-align: center;
     color: transparent;
     text-shadow: 0 0 0.1vw #411c1be6;
@@ -160,8 +178,7 @@ body
     position: absolute;
     width: 14.7vw;
     height: 2.8vw;
-    top: 6.9vw;
-    right: 7.8vw;
+    top: 2.1vw;
     text-align: center;
     color: transparent;
     text-shadow: 0 0 0.1vw #ffffffab;
@@ -171,6 +188,8 @@ body
     font-family: system-ui;
     user-select: none;
 }
+
+/* HEIST SETUP OPTIONS */
 #setupContainer
 {
     position: absolute;
@@ -186,7 +205,7 @@ body
     background-image: url(img/element.png);
     background-size: 100% 110%;
     padding-left: 0.5vw;
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
     color: transparent;
     text-shadow: 0 0 0.1vw #ffffffab;
     padding-top: 0px;
@@ -213,7 +232,7 @@ body
 }
 .backButton
 {
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
     color: transparent;
     text-shadow: 0 0 0.1vw #ffffffab;
     height: 3vw;
@@ -260,6 +279,8 @@ body
 {
     color: black;
 }
+
+/* CUSTOM MONEY LIMIT CLASSES */
 .moneyLimitLabel
 {
     position: absolute;
@@ -292,25 +313,21 @@ body
 }
 #cutLimitLabel
 {
-    top: 17.6vw;
-    right: 7.95vw;
+    top: 12.9vw;
     user-select: none;
 }
 #cutLimit
 {
-    top: 19.9vw;
-    right: 7.95vw;
+    top: 14.9vw;
 }
 #takeLimitLabel
 {
-    top: 11.1vw;
-    right: 7.9vw;
+    top: 6.4vw;
     user-select: none;
 }
 #takeLimit
 {
-    top: 13.3vw;
-    right: 7.95vw;
+    top: 8.5vw;
 }
 .error
 {
@@ -322,6 +339,8 @@ body
   50% { text-shadow: 0 0 1.5px #411c1be6; }
   100% { text-shadow: 0 0 1.5px #f0eeef9c; }
 }
+
+/* TRUCK LOCATION SELECTOR */
 .truckIcon
 {
     background-image: url(img/truck_off.png);
@@ -329,7 +348,7 @@ body
     width: 1.4vw;
     height: 1.7vw;
     position: absolute;
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
 }
 .truckOn
 {
@@ -337,18 +356,18 @@ body
 }
 #truck1
 {
-    top: 12vw;
+    top: 11vw;
     left: 56.4vw;
 }
 #truck2
 {
     top: 13.2vw;
-    left: 70.7vw;
+    left: 71vw;
 }
 #truck3
 {
     top: 24.6vw;
-    left: 70.3vw;
+    left: 71.5vw;
 }
 #truck4
 {
@@ -360,15 +379,113 @@ body
     top: 38.6vw;
     left: 66.5vw;
 }
-.invisibleTextarea
+
+/* GRAPPLING HOOK LOCATION SELECTOR*/
+.hookIcon
 {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 2em;
-    height: 2em;
-    zIndex: -1;
+    background-image: url(img/grappling_hook_off.png);
+    background-size: 100% 100%;
+    width: 1.7vw;
+    height: 1.7vw;
+    position: absolute;
+    cursor: url(img/cursor.png) 10 2,pointer;
 }
+.hookOn
+{
+    background-image: url(img/grappling_hook_on.png);
+}
+#hook1
+{
+    top: 15.9vw;
+    left: 55.4vw;
+}
+#hook2
+{
+    top: 13.2vw;
+    left: 68.9vw;
+}
+#hook3
+{
+    top: 26.5vw;
+    left: 70vw;
+}
+#hook4
+{
+    top: 26.5vw;
+    left: 80.5vw;
+}
+
+/* OUTFITS LOCATION SELECTOR */
+.clothesIcon
+{
+    background-image: url(img/clothes_off.png);
+    background-size: 100% 100%;
+    width: 1.7vw;
+    height: 1.7vw;
+    position: absolute;
+    cursor: url(img/cursor.png) 10 2,pointer;
+}
+.clothesOn
+{
+    background-image: url(img/clothes_on.png);
+}
+#clothes1
+{
+    top: 12.3vw;
+    left: 54.4vw;
+}
+#clothes2
+{
+    top: 11.4vw;
+    left: 69.9vw;
+}
+#clothes3
+{
+    top: 29vw;
+    left: 65.7vw;
+}
+#clothes4
+{
+    top: 32.8vw;
+    left: 64.5vw;
+}
+
+/* CUTTERS LOCATION SELECTOR */
+.cuttersIcon
+{
+    background-image: url(img/bolt_cutters_off.png);
+    background-size: 100% 100%;
+    width: 1.7vw;
+    height: 1.7vw;
+    position: absolute;
+    cursor: url(img/cursor.png) 10 2,pointer;
+}
+.cuttersOn
+{
+    background-image: url(img/bolt_cutters_on.png);
+}
+#cutters1
+{
+    top: 13.3vw;
+    left: 56.4vw;
+}
+#cutters2
+{
+    top: 15.1vw;
+    left: 71.2vw;
+}
+#cutters3
+{
+    top: 24.4vw;
+    left: 66.7vw;
+}
+#cutters4
+{
+    top: 32.5vw;
+    left: 75.7vw;
+}
+
+/* PLAYER MONEY DISPLAY */
 #playerCutContainer
 {
     background-image: url(img/player_cuts.png);
@@ -382,8 +499,8 @@ body
 #totalCut
 {
     position: absolute;
-    top: 48vw;
-    right: 43vw;
+    top: 10vw;
+    right: 2vw;
     color: transparent;
     text-shadow: 0 0 1.5px #f0eeef9c;
     font-size: 1.5vw;
@@ -411,6 +528,8 @@ body
     position: absolute;
     top: 0.2vw;
 }
+
+/* STAT.TXT EXPORT BUTTONS */
 #stattextContainer
 {
     top: 4vw;
@@ -435,7 +554,7 @@ body
 {
     border: 0.2vw solid #8e3232;
     border-radius: 0.2vw;
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
     background-color: #1e1516c2;
 }
 .statTextButton:after
@@ -456,6 +575,19 @@ body
 {
     transition: opacity 3s ease-in;
 }
+
+/* STAT.TXT TEXTAREA FOR COPY OPTION */
+.invisibleTextarea
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 2em;
+    height: 2em;
+    zIndex: -1;
+}
+
+/* STAT.TXT SOURCE VIEWER */
 .statTextViewer
 {
     position: absolute;
@@ -480,18 +612,451 @@ body
     position: absolute;
     width: 100vw;
     height: 100vh;
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
 }
+
+/* EL RUBIO SAFE EXCLUSION CHECKBOX */
 #elRubioSafe
 {
     position: absolute;
     font-size: 1.5vw;
-    top: 17.6vw;
+    top: 12.9vw;
     color: transparent;
     text-shadow: 0 0 0.1vw #411c1be6;
     padding-left: 1vw;
-    right: 8.5vw;
-    cursor: url(img/cursor.png),pointer;
+    right: 1.1vw;
+    cursor: url(img/cursor.png) 10 2,pointer;
+    user-select: none;
+}
+
+/* COMPOUND LAYER */
+#compoundSettings
+{
+    position: absolute;
+    top: 3.6vw;
+    left: 34.9vw;
+    width: 58.4vw;
+    height: 47.3vw;
+    transition: clip-path 0.5s linear;
+}
+
+/* COMPOUND MAP CLIPPING */
+.compoundExpanded
+{
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+.compoundContracted
+{
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+}
+.compoundHidden
+{
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+#compoundMap
+{
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    background-image: url(img/compound_map.png);
+    background-size: 100% 100%;
+}
+
+/* GENERAL LOOT SPOT ICON*/
+.lootSpot
+{
+    border: 0.2vw solid #8c3d40;
+    border-radius: 50%;
+    width: 1.5vw;
+    height: 1.5vw;
+    display: block;
+    position: absolute;
+    font-size: 1.2vw;
+    line-height: 1.5vw;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #8c3d40;
+    text-align: center;
+    background-color: #1a1414de;
+    cursor: url(img/cursor.png) 10 2,pointer;
+    user-select: none;
+}
+.lootSpot:before
+{
+    top: 0.1vw;
+    position: relative;
+}
+
+/* ISLAND SECONDARY LOOT LOCATIONS */
+#hangarTopA
+{
+    top: 7vw;
+    left: 56vw;
+}
+#hangarTopB
+{
+    top: 9vw;
+    left: 56vw;
+}
+#hangarLowA
+{
+    top: 9.5vw;
+    left: 51.6vw;
+}
+#hangarLowB
+{
+    top: 9.5vw;
+    left: 53.7vw;
+}
+#airstripA
+{
+    top: 12.3vw;
+    left: 58vw;;
+}
+#airstripB
+{
+    top: 12.3vw;
+    left: 60vw;
+}
+#northDockLongShedA
+{
+    top: 11.1vw;
+    left: 65.6vw;
+}
+#northDockLongShedB
+{
+    top: 11.1vw;
+    left: 67.7vw;
+}
+#northDockLockedShedA
+{
+    top: 15.5vw;
+    left: 68.8vw;
+}
+#northDockLockedShedB
+{
+    top: 17.3vw;
+    left: 67.5vw;
+}
+#northDockLockedShedC
+{
+    top: 17.5vw;
+    left: 69.6vw;
+}
+#northDockShedA
+{
+    top: 11.3vw;
+    left: 71.9vw;
+}
+#northDockShedB
+{
+    top: 11.3vw;
+    left: 74.1vw;
+}
+#weedFarmA
+{
+    top: 29.3vw;
+    left: 76.1vw;
+}
+#weedFarmB
+{
+    top: 27.7vw;
+    left: 74.7vw;
+}
+#centralShedA
+{
+    top: 26.6vw;
+    left: 72vw;
+}
+#centralShedB
+{
+    top: 28.7vw;
+    left: 72vw;
+}
+#mainDockEastShedA
+{
+    top: 26.4vw;
+    left: 68vw;
+}
+#mainDockEastShedB
+{
+    top: 28.5vw;
+    left: 68vw;
+}
+#mainDockLargeShedA
+{
+    top: 24vw;
+    left: 64.7vw;
+}
+#mainDockLargeShedB
+{
+    top: 22.3vw;
+    left: 66.1vw;
+}
+#mainDockLargeShedC
+{
+    top: 23.2vw;
+    left: 68.2vw;
+}
+#mainDockWestShedA
+{
+    top: 27.8vw;
+    left: 63.9vw;
+}
+#mainDockWestShedB
+{
+    top: 27.8vw;
+    left: 61.8vw;
+}
+
+/* COMPUND SECONDARY LOOT SPOTS */
+#northA
+{
+    top: 28.4vw;
+    left: 45.1vw;
+}
+#northB
+{
+    top: 30.7vw;
+    left: 45.1vw;
+}
+#centralA
+{
+    top: 20.5vw;
+    left: 32.3vw;
+}
+#centralB
+{
+    top: 22.7vw;
+    left: 32.3vw;
+}
+#southA
+{
+    top: 34vw;
+    left: 24.2vw;
+}
+#southB
+{
+    top: 34vw;
+    left: 22vw;
+}
+#basementA
+{
+    top: 22.5vw;
+    left: 22vw;
+}
+#basementB
+{
+    top: 22.5vw;
+    left: 19.8vw;
+}
+/* SECONDARY LOOT MARKERS */
+.lootOn  {}
+.contentCash:before
+{
+    content: "$";
+}
+.contentCoke:before
+{
+    content: "C";
+}
+.contentGold:before
+{
+    content: "G";
+}
+.contentWeed:before
+{
+    content: "W";
+}
+.paintingOn:before
+{
+    content: "P";
+}
+.paintingSpot
+{
+    border: 0.2vw solid #8c3d40;
+    width: 1.5vw;
+    height: 1.8vw;
+    display: block;
+    position: absolute;
+    font-size: 1.2vw;
+    line-height: 2vw;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #8c3d40;
+    text-align: center;
+    background-color: #1a1414de;
+    cursor: url(img/cursor.png) 10 2,pointer;
+    user-select: none;
+}
+/* COMPOUND PAITING SPOTS */
+#paintingNorth
+{
+    top: 29.6vw;
+    left: 42.7vw;
+}
+#paintingCentral
+{
+    top: 21.5vw;
+    left: 30.1vw;
+}
+#paintingSouth
+{
+    top: 36.1vw;
+    left: 23.1vw;
+}
+#paintingOfficeA
+{
+    top: 23.6vw;
+    left: 26.1vw;
+}
+#paintingOfficeB
+{
+    top: 25vw;
+    left: 23.9vw;
+}
+#paintingBasementA
+{
+    top: 20vw;
+    left: 22vw;
+}
+#paintingBasementB
+{
+    top: 20vw;
+    left: 19.8vw;
+}
+/* GTA STYLE MAP TOGGLE BUTTON */
+#mapButton
+{
+    background-image: url(img/map_button.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    top: 48.9vw;
+    left: 62.2vw;
+    width: 5.4vw;
+    height: 2.1vw;
+    cursor: url(img/cursor.png) 10 2,pointer;
+    z-index: 1;
+}
+
+/* LOOT SELECTOR "CONTEXT" MENU */
+.secondaryLootSelector
+{
+    position: absolute;
+    top: 10vw;
+    left: 10vw;
+    width: 10vw;
+    z-index: 4;
+}
+.secondaryLootSelector
+{
+    position: absolute;
+    top: 10vw;
+    left: 10vw;
+    width: 10vw;
+    z-index: 4;
+}
+.lootOption
+{
+    background-color: #1d1415;
+    cursor: url(img/cursor.png) 10 2,pointer;
+    border: 0.3vw solid #832929;
+    user-select: none;
+}
+.lootOption span
+{
+    position: relative;
+    top: -0.3vw;
+    padding-left: 2vw;
+    height: 2vw;
+    font-size: 1.5vw;
+    line-height: 2.5vw;
+    color: transparent;
+    text-shadow: 0 0 0.1vw #ffffffab;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    pointer-events: none;
+}
+.lootOption::before
+{
+    border-radius: 50%;
+    position: relative;
+    left: 0.7vw;
+    top: 0.3vw;
+    border: 0.3vw solid #832929;
+    content: "";
+    display: inline-block;
+    height: 1.5vw;
+    width: 1.5vw;
+}
+.lootOption:hover
+{
+    background-color: #ffffffab;
+    text-shadow: 0 0 0.1vw #000;
+    transition: background-color 0.5s linear;
+}
+.lootOptionSeparator
+{
+    border: 1px dotted #832929;
+    margin: 0.5vw 0vw 0.5vw 0vw;
+}
+.cashOption::before
+{
+    background-color: #525b54;
+}
+.cokeOption::before
+{
+    background-color: white;
+}
+.goldOption::before
+{
+    background-color: gold;
+}
+.weedOption::before
+{
+    background-color: green;
+}
+.emptyOption::before
+{
+    background-color: transparent;
+}
+#defaultLootPlacement
+{
+    position: absolute;
+    right: 9.1vw;
+    top: 43.5vw;
+    width: 17vw;
+    display: inline-block;
+    color: transparent;
+    padding-left: 1.8vw;
+    font-size: 1.4vw;
+    line-height: 2vw;
+    font-variant: all-small-caps;
+    font-family: system-ui;
+    text-align: center;
+    padding: 0 1vw 0.25vw 1vw;
+    border: 0.3vw solid #8e3232;
+    border-radius: 0.2vw;
+    cursor: url(img/cursor.png) 10 2,pointer;
+    user-select: none;
+}
+.usingCustomPrices
+{
+    text-shadow: 0 0 0.1vw #e45958ab;
+    background-color: #1e1516c2;
+}
+.usingOriginalPrices
+{
+    text-shadow: 0 0 0.1vw #d05757;
+    background-color: #451b1c;
+}
+/* INVISIBLE OVERLAY TO CLOSE CONTEXT MENU WHEN CLICKING ANYWHERE ELSE */
+.secondarySelectorOverlay
+{
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 3;
+    user-select: none;
 }
 
 /* TUTORIAL OVERLAY STYLES */
@@ -514,7 +1079,7 @@ body
     width: 100vw;
     height: 100vh;
     position: absolute;
-    cursor: url(img/cursor.png),pointer;
+    cursor: url(img/cursor.png) 10 2,pointer;
 }
 .arrowLeft:before
 {
@@ -569,6 +1134,15 @@ body
 {
     top: 47.1vw;
     right: 32vw;
+    position: absolute;
+    border-radius: 2vw;
+    background-color: #ff9800b0;
+    font-size: 1.7vw;
+}
+.calculatorAssumption
+{
+    top: 40.1vw;
+    right: 42vw;
     position: absolute;
     border-radius: 2vw;
     background-color: #ff9800b0;
@@ -639,7 +1213,7 @@ body
 }
 .calculateCuts
 {
-    top: 25.3vw;
+    top: 19.3vw;
     left: 37.1vw;
     position: absolute;
     border-radius: 2vw;
@@ -648,8 +1222,8 @@ body
 }
 .selectLoot
 {
-    top: 20.3vw;
-    left: 37.1vw;
+    top: 29vw;
+    left: 44.2vw;
     position: absolute;
     border-radius: 2vw;
     background-color: #ff9800b0;
@@ -667,21 +1241,21 @@ body
 </style>
 </head>
 <body>
-
     <!-- TUTORIAL OVERLAY -->
     <div id="overlay">
         <div class="setHeistOptions arrowLeft">在这里设置选项</div>
         <div class="primaryDisplay arrowRight">主要目标价值</div>
-        <div class="enterScoreLimit arrowRight">游戏限制了抢劫总共能给多少钱</div>
+        <div class="enterScoreLimit arrowRight">游戏限制了抢劫总共能获取钱数量</div>
         <div class="selectSafe arrowRight">默认情况下包括El Rubio保险箱。如果跳过办公室保险箱，请取消勾选</div>
         <div class="calculateCuts arrowLeft">计算玩家数量</br>削减才能最大化价值</div>
-        <div class="selectLoot arrowLeft">选择次要目标</div>
-        <div class="enterTakeLimit arrowRight">玩家收益也有限制。</br>同样，这是最高百分比的玩家削减收益</div>
+        <div class="selectLoot">使用岛屿和复合地图</br>选择次要的战利品点</div>
+        <div class="enterTakeLimit arrowRight">玩家收益也有限制</br>同样，这是最高百分比的玩家削减收益</div>
         <div class="selectTruckLocation arrowLeft">单击任何卡车图标以选择其位置</div>
         <div class="selectPrimary arrowLeft">打开主要目标选择器，单击图片以选择主要目标</div>
         <div class="moneyDisplay arrowLeft">你计算的抢劫收益将在这里显示</div>
         <div class="selectDifficulty arrowRight">使用此按钮切换普通或困难模式</div>
-        <div class="statTextOperations arrowLeft">导入你的stat.txt文件，并放到gtahaxui.exe同一目录下</div>
+        <div class="calculatorAssumption">计算假设每个玩家</br>将100%装满他们的包与战利品</div>
+        <div class="statTextOperations arrowLeft">导出你的stat.txt文件，并放到gtahaxui.exe同一目录下</div>
         <div id="overlayClickZone"></div>
     </div>
 
@@ -695,8 +1269,8 @@ body
             <div id="weaponCategory" class="setupCategory"><div class="checkbox"></div><span>武器装备</span></div>
             <div id="disruptionCategory" class="setupCategory"><div class="checkbox"></div><span>干扰</span></div>
             <div id="equipmentCategory" class="setupCategory"><div class="checkbox"></div><span>装备</span></div>
-            <div id="islandLootCategory" class="setupCategory"><div class="checkbox"></div><span>岛屿次要目标</span></div>
-            <div id="compoundLootCategory" class="setupCategory"><div class="checkbox"></div><span>复合次要目标</span></div>
+            <!-- <div id="islandLootCategory" class="setupCategory"><div class="checkbox"></div><span>Island Loot</span></div>
+            <div id="compoundLootCategory" class="setupCategory"><div class="checkbox"></div><span>Compound Loot</span></div> -->
             <div id="takeCategory" class="setupCategory"><div class="checkbox"></div><span>玩家分红计算</span></div>
         </div>
         <div id="approachVehiclesContainer" class="setupCategoryContainer hidden">
@@ -715,38 +1289,35 @@ body
             <div id="weaponCrackshot" class="setupCategory" int="3"><div class="checkbox"></div><span>神枪手</span></div>
             <div id="weaponSaboteur" class="setupCategory" int="4"><div class="checkbox"></div><span>破坏者</span></div>
             <div id="weaponMarksman" class="setupCategory" int="5"><div class="checkbox"></div><span>神射手</span></div>
-            <!-- <div id="weaponSuppressors" class="setupCategory"><div class="checkbox checked"></div><span>Suppressors</span></div> -->
+            <div id="weaponSuppressors" class="setupCategory" bit="12"><div class="checkbox"></div><span>消音器</span></div>
         </div>
         <div id="disruptionContainer" class="setupCategoryContainer hidden">
             <div class="backButton"> &lt; 干扰</div>
             <div id="disruptionWeapons" class="setupCategory" bit="13"><div class="checkbox"></div><span>武器</span></div>
             <div id="disruptionArmor" class="setupCategory" bit="14"><div class="checkbox"></div><span>防弹衣</span></div>
             <div id="disruptionAirSupport" class="setupCategory" bit="15"><div class="checkbox"></div><span>空中支援</span></div>
-            <div id="disruptionPoison" class="setupCategory"><div class="checkbox"></div><span>复合粉</span></div>
+            <div id="disruptionPoison" class="setupCategory" bit="13"><div class="checkbox"></div><span>切粉</span></div>
         </div>
         <div id="equipmentContainer" class="setupCategoryContainer hidden">
             <div class="backButton"> &lt; 装备</div>
             <div id="equipmentDemoCharges" class="setupCategory" bit="8"><div class="checkbox"></div><span>倒卖费用</span></div>
-            <div id="equipmentTorch" class="setupCategory" bit="9"><div class="checkbox"></div><span>割炬</span></div>
-            <div id="equipmentBoltcutters" class="setupCategory"><div class="checkbox"></div><span>螺栓切割器</span></div>
-            <div id="equipmentUniform" class="setupCategory"><div class="checkbox"></div><span>保安制服</span></div>
-            <div id="equipmentGrappling" class="setupCategory"><div class="checkbox"></div><span>抓钩</span></div>
+            <!-- <div id="equipmentTorch" class="setupCategory" bit="9"><div class="checkbox"></div><span>Cutting Torch</span></div> -->
         </div>
-        <div id="islandLootContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; 岛屿次要目标</div>
-            <div id="islandLootCash" class="setupCategory"><div class="checkbox"></div><span>现金</span></div>
-            <div id="islandLootCoke" class="setupCategory"><div class="checkbox"></div><span>可可</span></div>
-            <div id="islandLootGold" class="setupCategory"><div class="checkbox"></div><span>黄金</span></div>
-            <div id="islandLootWeed" class="setupCategory"><div class="checkbox"></div><span>大麻</span></div>
+        <!-- <div id="islandLootContainer" class="setupCategoryContainer hidden">
+            <div class="backButton"> &lt; Island Loot</div>
+            <div id="islandLootCash" class="setupCategory"><div class="checkbox"></div><span>Cash</span></div>
+            <div id="islandLootCoke" class="setupCategory"><div class="checkbox"></div><span>Coke</span></div>
+            <div id="islandLootGold" class="setupCategory"><div class="checkbox"></div><span>Gold</span></div>
+            <div id="islandLootWeed" class="setupCategory"><div class="checkbox"></div><span>Weed</span></div>
         </div>
         <div id="compoundLootContainer" class="setupCategoryContainer hidden">
-            <div class="backButton"> &lt; 复合次要目标</div>
-            <div id="compoundLootCash" class="setupCategory"><div class="checkbox"></div><span>现金</span></div>
-            <div id="compoundLootCoke" class="setupCategory"><div class="checkbox"></div><span>可可</span></div>
-            <div id="compoundLootGold" class="setupCategory"><div class="checkbox"></div><span>黄金</span></div>
-            <div id="compoundLootPainting" class="setupCategory"><div class="checkbox"></div><span>画作</span></div>
-            <div id="compoundLootWeed" class="setupCategory"><div class="checkbox"></div><span>大麻</span></div>
-        </div>
+            <div class="backButton"> &lt; Compund Loot</div>
+            <div id="compoundLootCash" class="setupCategory"><div class="checkbox"></div><span>Cash</span></div>
+            <div id="compoundLootCoke" class="setupCategory"><div class="checkbox"></div><span>Coke</span></div>
+            <div id="compoundLootGold" class="setupCategory"><div class="checkbox"></div><span>Gold</span></div>
+            <div id="compoundLootPainting" class="setupCategory"><div class="checkbox"></div><span>Painting</span></div>
+            <div id="compoundLootWeed" class="setupCategory"><div class="checkbox"></div><span>Weed</span></div>
+        </div> -->
         <div id="takeContainer" class="setupCategoryContainer hidden">
             <div class="backButton"> &lt; 玩家分红计算</div>
             <div id="teamsize" class="setupCategory"><span>人数</span><input class="teamSize" type="number" value="1" min="1" max="4"></div>
@@ -757,10 +1328,10 @@ body
         </div>
     </div>
 
-
     <!-- PRIMARY LOOT SELECTOR -->
     <div id="lootFrame">
         <div id="lootSelector" class="hidden">
+            <div class="lootObject lootDefault" title="Game's Pick"></div>
             <div class="lootObject lootTequilla" title="Sinsimito Tequilla"></div>
             <div class="lootObject lootNecklace" title="Ruby Necklace"></div>
             <div class="lootObject lootBonds" title="Bearer Bonds"></div>
@@ -773,35 +1344,143 @@ body
     <!-- PRIMARY LOOT SELECTED -->
     <div id="lootPic"></div>
     <div id="lootName"></div>
-    <div id="primaryName"></div>
-    <input id="primaryValue" type="text" class="moneyLimit"></div>
-
-    <!-- TOTAL TAKE LIMIT -->
-    <div id="takeLimitLabel" class="moneyLimitLabel">总获利限额</div>
-    <input id="takeLimit" type="text" class="moneyLimit"></div>
-
-    <!-- CUT LIMIT -->
-    <div id="cutLimitLabel" class="moneyLimitLabel">收入限制</div>
-    <input id="cutLimit" type="text" class="moneyLimit"></div>
-
-    <!-- el rubio safe -->
-    <div id="elRubioSafe">☑</div>
 
     <!-- DISPLAY TRUCK ICONS -->
-    <div id="truck1" class="truckIcon"></div>
-    <div id="truck2" class="truckIcon"></div>
-    <div id="truck3" class="truckIcon"></div>
-    <div id="truck4" class="truckIcon"></div>
-    <div id="truck5" class="truckIcon"></div>
+    <div id="mainSettings">
+        <!-- PRIMARY LOOT PRICE AND NAME -->
+        <div id="moneyLimits">
+            <div id="primaryName"></div>
+            <input id="primaryValue" type="text" class="moneyLimit">
 
-    <!-- DISPLAY PLAYER CUT CALCULATOR -->
-    <div id="playerCutContainer">
-        <div class="playerMoney"><span></span><span></span></div>
-        <div class="playerMoney"><span></span><span></span></div>
-        <div class="playerMoney"><span></span><span></span></div>
-        <div class="playerMoney"><span></span><span></span></div>
+            <!-- TOTAL TAKE LIMIT -->
+            <div id="takeLimitLabel" class="moneyLimitLabel">总获利限额</div>
+            <input id="takeLimit" type="text" class="moneyLimit">
+
+            <!-- CUT LIMIT -->
+            <div id="cutLimitLabel" class="moneyLimitLabel">收入限制</div>
+            <input id="cutLimit" type="text" class="moneyLimit">
+
+            <!-- el rubio safe -->
+            <div id="elRubioSafe" title="Want to take El Rubio's office safe?">☑</div>
+        </div>
+
+
+        <!-- ON SITE EQUIPMENT -->
+        <div id="truck1" class="truckIcon"></div>
+        <div id="truck2" class="truckIcon"></div>
+        <div id="truck3" class="truckIcon"></div>
+        <div id="truck4" class="truckIcon"></div>
+        <div id="truck5" class="truckIcon"></div>
+
+        <div id="hook1" class="hookIcon" bit="0"></div>
+        <div id="hook2" class="hookIcon" bit="1"></div>
+        <div id="hook3" class="hookIcon" bit="2"></div>
+        <div id="hook4" class="hookIcon" bit="3"></div>
+
+        <div id="clothes1" class="clothesIcon" bit="4"></div>
+        <div id="clothes2" class="clothesIcon" bit="5"></div>
+        <div id="clothes3" class="clothesIcon" bit="6"></div>
+        <div id="clothes4" class="clothesIcon" bit="7"></div>
+
+        <div id="cutters1" class="cuttersIcon" bit="8"></div>
+        <div id="cutters2" class="cuttersIcon" bit="9"></div>
+        <div id="cutters3" class="cuttersIcon" bit="10"></div>
+        <div id="cutters4" class="cuttersIcon" bit="11"></div>
+
+        <!-- SECONDARY LOOT SPOTS  -->
+        <!--  AIRSTRIP -->
+        <div id="hangarTopA" class="lootSpot" bit="0"></div>
+        <div id="hangarTopB" class="lootSpot" bit="1"></div>
+        <div id="hangarLowA" class="lootSpot" bit="2"></div>
+        <div id="hangarLowB" class="lootSpot" bit="3"></div>
+        <div id="airstripA" class="lootSpot" bit="4"></div>
+        <div id="airstripB" class="lootSpot" bit="5"></div>
+
+        <!-- NORTH DOCK -->
+        <div id="northDockLongShedA" class="lootSpot" bit="6"></div>
+        <div id="northDockLongShedB" class="lootSpot" bit="7"></div>
+
+        <div id="northDockLockedShedA" class="lootSpot" bit="8"></div>
+        <div id="northDockLockedShedB" class="lootSpot" bit="9"></div>
+        <div id="northDockLockedShedC" class="lootSpot" bit="10"></div>
+
+        <div id="northDockShedA" class="lootSpot" bit="11"></div>
+        <div id="northDockShedB" class="lootSpot" bit="12"></div>
+
+        <!-- WEED FARM -->
+        <div id="weedFarmA" class="lootSpot" bit="13"></div>
+        <div id="weedFarmB" class="lootSpot" bit="14"></div>
+
+        <!-- CENTRAL SHED -->
+        <div id="centralShedA" class="lootSpot" bit="15"></div>
+        <div id="centralShedB" class="lootSpot" bit="16"></div>
+
+        <!-- MAIN DOCK SHEDS -->
+        <div id="mainDockEastShedA" class="lootSpot" bit="17"></div>
+        <div id="mainDockEastShedB" class="lootSpot" bit="18"></div>
+
+        <div id="mainDockLargeShedA" class="lootSpot" bit="19"></div>
+        <div id="mainDockLargeShedB" class="lootSpot" bit="20"></div>
+        <div id="mainDockLargeShedC" class="lootSpot" bit="21"></div>
+
+        <div id="mainDockWestShedA" class="lootSpot" bit="22"></div>
+        <div id="mainDockWestShedB" class="lootSpot" bit="23"></div>
+
+        <!-- DISPLAY PLAYER CUT CALCULATOR -->
+        <div id="playerCutContainer">
+            <div class="playerMoney"><span></span><span></span></div>
+            <div class="playerMoney"><span></span><span></span></div>
+            <div class="playerMoney"><span></span><span></span></div>
+            <div class="playerMoney"><span></span><span></span></div>
+            <span id="totalCut"></span>
+        </div>
     </div>
-    <span id="totalCut"></span>
+
+    <div id="mapButton"></div>
+
+    <div id="compoundSettings" class="compoundContracted">
+        <div id="compoundMap"></div>
+        <div id="northA" class="lootSpot" bit="0"></div>
+        <div id="northB" class="lootSpot" bit="1"></div>
+        <div id="centralA" class="lootSpot" bit="2"></div>
+        <div id="centralB" class="lootSpot" bit="3"></div>
+        <div id="southA" class="lootSpot" bit="4"></div>
+        <div id="southB" class="lootSpot" bit="5"></div>
+        <div id="basementA" class="lootSpot" bit="6"></div>
+        <div id="basementB" class="lootSpot" bit="7"></div>
+
+        <div id="paintingNorth" class="paintingSpot" bit="0"></div>
+        <div id="paintingCentral" class="paintingSpot" bit="1"></div>
+        <div id="paintingSouth" class="paintingSpot" bit="2"></div>
+        <div id="paintingOfficeA" class="paintingSpot" bit="3"></div>
+        <div id="paintingOfficeB" class="paintingSpot" bit="4"></div>
+        <div id="paintingBasementA" class="paintingSpot" bit="5"></div>
+        <div id="paintingBasementB" class="paintingSpot" bit="6"></div>
+    </div>
+
+    <!-- secondary loot selector -->
+    <div id="compoundSecondaryLootSelector" class="secondaryLootSelector hidden">
+        <div class="lootOption emptyOption"><span>空</span></div>
+        <div class="lootOptionSeparator"></div>
+        <div class="lootOption goldOption"><span>黄金</span></div>
+        <div class="lootOptionSeparator"></div>
+        <div class="lootOption cashOption"><span>现金</span></div>
+        <div class="lootOption weedOption"><span>大麻</span></div>
+        <div class="lootOption cokeOption"><span>可可</span></div>
+    </div>
+
+    <div id="islandSecondaryLootSelector" class="secondaryLootSelector hidden">
+        <div class="lootOption emptyOption"><span>空</span></div>
+        <div class="lootOptionSeparator"></div>
+        <div class="lootOption cashOption"><span>现金</span></div>
+        <div class="lootOption weedOption"><span>大麻</span></div>
+        <div class="lootOption cokeOption"><span>可可</span></div>
+        <div class="lootOptionSeparator"></div>
+        <div class="lootOption goldOption"><span>黄金</span></div>
+    </div>
+
+    <div id="compoundSelectorOverlay" class="secondarySelectorOverlay hidden"></div>
+    <div id="islandSelectorOverlay" class="secondarySelectorOverlay hidden"></div>
 
     <!-- COPY AND DOWNLOAD BUTTONS -->
     <div id="stattextContainer">
@@ -810,6 +1489,9 @@ body
         <div id="downloadButton" class="statTextButton">下载</div>
         <div id="displayButton" class="statTextButton">显示</div>
     </div>
+
+    <!-- DISABLE CUSTOM VALUES -->
+    <div id="defaultLootPlacement" class="usingCustomPrices">使用默认价格</div>
 
     <!-- HARD MODE INDICATOR -->
     <div id="hardModeButton" class="hardOff"></div>
@@ -843,7 +1525,8 @@ let cayo =
     npcCutPercentage: 12,
     hardModeMultiplier: 1.1,
     defaultCutLimit: 2550000,
-    defaultTakeLimit: 10818212,
+    normalModeTakeLimit: 6662960,
+    hardModeTakeLimit: 10818212,
     officeSafeMax: 100000
 }
 
@@ -855,7 +1538,18 @@ let settings =
     difficulty: "normal", //cayo.difficulty
     vehicleValue: 0,
     takeOfficeSafe: true,
-    missionsBinary: 1+1024+2048 // gather intel + mandatory cutter + cloner
+    missionsBinary: 1+1024+2048+512, // gather intel + mandatory cutter + cloner + torch
+    pois: 16384+65536, //power station + control tower
+    compoundCash: 0,
+    compoundCoke: 0,
+    compoundGold: 0,
+    compoundWeed: 0,
+    compoundPainting: 0,
+    islandCash: 0,
+    islandCoke: 0,
+    islandGold: 0,
+    islandWeed: 0,
+    defaultLootPrice: false
 };
 
 /* FUNCTIONALITY */
@@ -872,6 +1566,9 @@ function toggleHardMode(event)
     {
         button.className = "hardOn";
         settings.difficulty = "hard";
+        takeLimit.value = cayo.hardModeTakeLimit;
+        formatTakeLimit(takeLimit);
+
         if (Number.isInteger(settings.primary.price))
             primaryValue.value = (settings.primary.price * cayo.hardModeMultiplier).toLocaleString()
     }
@@ -879,6 +1576,9 @@ function toggleHardMode(event)
     {
         button.className = "hardOff";
         settings.difficulty = "normal";
+        takeLimit.value = cayo.normalModeTakeLimit;
+        formatTakeLimit(takeLimit);
+
         if (Number.isInteger(settings.primary.price))
             primaryValue.value = (settings.primary.price).toLocaleString()
     }
@@ -886,6 +1586,37 @@ function toggleHardMode(event)
     calculateTake();
 }
 document.querySelector("#hardModeButton").addEventListener("click", toggleHardMode); //hard mode button click event
+
+function toggleDefaultMoney(event)
+{
+    let target = event.target;
+    if (target.classList.contains("usingOriginalPrices"))
+    {
+        target.classList.remove("usingOriginalPrices");
+        target.classList.add("usingCustomPrices");
+        settings.defaultLootPrice = false;
+        target.textContent = "Use Default Prices";
+
+        // show custom price elements
+        document.querySelector("#playerCutContainer").classList.remove("hidden");
+        document.querySelector("#moneyLimits").classList.remove("hidden");
+        document.querySelector("#takeCategory").classList.remove("hidden");
+
+    }
+    else
+    {
+        target.classList.remove("usingCustomPrices");
+        target.classList.add("usingOriginalPrices");
+        settings.defaultLootPrice = true;
+        target.textContent = "Use Custom Prices";
+
+        // remove custom price elements
+        document.querySelector("#playerCutContainer").classList.add("hidden");
+        document.querySelector("#moneyLimits").classList.add("hidden");
+        document.querySelector("#takeCategory").classList.add("hidden");
+    }
+}
+document.querySelector("#defaultLootPlacement").addEventListener("click", toggleDefaultMoney);
 
 /* display loot selector */
 function showLootSelector()
@@ -898,18 +1629,35 @@ document.querySelector("#lootFrame").addEventListener("click", showLootSelector)
 
 function selectPrimaryLoot(lootName)
 {
-    /* find by name because i was too lazy to add indexes into html */
-    cayo.primary.forEach(function(loot)
-    {
-        if (loot.name == lootName)
-            settings.primary = loot;
-    });
+    let lootPic = document.querySelector("#lootPic");
+    let lootNameElement = document.querySelector("#lootName");
+    let primaryName = document.querySelector("#primaryName");
+    let primaryValue = document.querySelector("#primaryValue");
 
-    /* set loot display */
-    document.querySelector("#lootPic").className = settings.primary.className;
-    document.querySelector("#lootName").textContent = settings.primary.name;
-    document.querySelector("#primaryName").textContent = settings.primary.name;
-    document.querySelector("#primaryValue").value = (settings.difficulty == "normal") ? settings.primary.price.toLocaleString() : (settings.primary.price * cayo.hardModeMultiplier).toLocaleString();;
+    if (lootName == "Game's Pick")
+    {
+        settings.primary = "default";
+
+        lootPic.className = "lootDefault";
+        lootNameElement.textContent = "Game's Pick";
+        primaryName.textContent = "Game's Pick";
+        primaryValue.value = "Unknown";
+    }
+    else
+    {
+        /* find by name because lazy */
+        cayo.primary.forEach(function(loot)
+        {
+            if (loot.name == lootName)
+                settings.primary = loot;
+        });
+
+        /* set loot display */
+        lootPic.className = settings.primary.className;
+        lootNameElement.textContent = settings.primary.name;
+        primaryName.textContent = settings.primary.name;
+        primaryValue.value = (settings.difficulty == "normal") ? settings.primary.price.toLocaleString() : (settings.primary.price * cayo.hardModeMultiplier).toLocaleString();
+    }
 
     calculateTake();
 }
@@ -939,10 +1687,6 @@ document.querySelectorAll("#setupCategories .setupCategory").forEach(function(se
 /* make escape key close, hide, cancel or go back */
 function escapeKey(event)
 {
-    /* quit execution if non escape key is pressed */
-    if (event.keyCode != 27)
-        return;
-
     /* hide beautiful and helpful overlay */
     let overlay = document.querySelector("#overlay");
     if (!overlay.classList.contains("hidden"))
@@ -974,7 +1718,94 @@ function escapeKey(event)
         });
     }
 }
-document.addEventListener("keydown", escapeKey); //set da event
+
+/* TOGGLE COMPOUND MAP */
+let togglingCompoundMap = false;
+function spaceKey(event)
+{
+    if (togglingCompoundMap)
+        return;
+
+    var container = document.querySelector("#compoundSettings");
+
+    if(document.querySelector("#overlay").classList.contains("hidden"))
+    {
+        togglingCompoundMap = true;
+        if (container.classList.contains("compoundExpanded"))
+        {
+            container.classList.remove("compoundExpanded");
+            container.classList.add("compoundHidden");
+            setTimeout(function()
+            {
+                let container = document.querySelector("#compoundSettings")
+                container.classList.remove("compoundHidden");
+                container.classList.add("compoundContracted");
+                setTimeout(function(){togglingCompoundMap = false;}, 500);
+            }, 500);
+        }
+        else
+        {
+            container.classList.add("compoundExpanded");
+            container.classList.remove("compoundContracted");
+            setTimeout(function(){togglingCompoundMap = false;}, 1000);
+        };
+    }
+}
+document.querySelector("#mapButton").addEventListener("click", spaceKey);
+
+function keyPressed(event)
+{
+    /* quit execution if non escape key is pressed */
+    switch (event.keyCode)
+    {
+        case 27:
+        escapeKey(event);
+        break;
+
+        case 32:
+        spaceKey(event);
+        break;
+
+        case 189:
+        keyZoom(-1);
+        break;
+
+        case 187:
+        keyZoom(1);
+        break;
+
+        case 109:
+        keyZoom(-1);
+        break;
+
+        case 107:
+        keyZoom(1);
+        break;
+    }
+}
+document.addEventListener("keydown", keyPressed); //set da event
+
+//wheel zoom
+let scale = 1;
+function zoom(factor)
+{
+    console.log(event);
+    document.body.style.transform = "scale(" + factor + ")";
+}
+
+function wheelZoom(event)
+{
+    scale += (event.deltaY * -0.001);
+    zoom(scale);
+}
+
+function keyZoom(delta)
+{
+    scale += (delta * 0.01);
+    zoom(scale);
+}
+document.addEventListener("wheel", wheelZoom); //set da event
+
 
 /* back button function on click */
 function goBack()
@@ -1005,20 +1836,28 @@ function toggleVehicle(event)
 
         // i did it single line but holy shit it was bad to read
         if (bit == 2 || bit == 4) //if alkonost or stealth annihilator are clicked on
-        if ((settings.missionsBinary & 1 << 2) == 0 // if alkonost
+        {
+            if ((settings.missionsBinary & 1 << 2) == 0 // if alkonost
             && (settings.missionsBinary & 1 << 4) == 0) // and annihilator bits are no longer set
-        if ((settings.missionsBinary & 1 << 7) != 0) // but pilot bit is set
-            settings.missionsBinary -= 1 << 7;;; // remove pilot bit and force kill all ifs
+            {
+                if ((settings.missionsBinary & 1 << 7) != 0) // but pilot bit is set
+                    settings.missionsBinary -= 1 << 7;
+            }
+        }
     }
     else
     {
         checkbox.classList.add("checked");
 
         if (bit == 2 || bit == 4) // if alkonost or annihilator are clicked on
-        if ((settings.missionsBinary & 1 << 2) == 0 // if alkonost
+        {
+            if ((settings.missionsBinary & 1 << 2) == 0 // if alkonost
             && (settings.missionsBinary & 1 << 4) == 0) // and annihilator
-        if ((settings.missionsBinary & 1 << 7) == 0) // and pilot are not set
-            settings.missionsBinary += 1 << 7;;; //set pilot bit and force kill all ifs
+            {
+                if ((settings.missionsBinary & 1 << 7) == 0) // and pilot are not set
+                    settings.missionsBinary += 1 << 7; //set pilot bit and force kill all ifs
+            }
+        }
 
         settings.missionsBinary += 1 << bit; //then set vehicle bit
     }
@@ -1029,32 +1868,53 @@ document.querySelectorAll("#approachVehiclesContainer .setupCategory").forEach(f
 });
 
 /* unlock equipment */
-//all on by default
-//TODO maybe: customize locations n shits
-
 /* select weapon */
 function selectWeapon(event)
 {
     settings.weaponID = parseInt(event.target.getAttribute("int"));
-    if (event.target.classList.contains("checked"))
+
+    let checkbox = event.target.querySelector(".checkbox");
+    if (checkbox.classList.contains("checked"))
     {
         event.target.querySelector(".checkbox").classList.remove("checked");
         settings.missionsBinary -= 1 << 12;
     }
     else
     {
-        document.querySelectorAll("#weaponContainer .setupCategory").forEach(function(weapon)
+        document.querySelectorAll("#weaponContainer .setupCategory:not(#weaponSuppressors)").forEach(function(weapon)
         {
-            weapon.querySelector(".checkbox").classList.remove("checked");
+            if (weapon.querySelector(".checkbox").classList.contains("checked"))
+            {
+                weapon.querySelector(".checkbox").classList.remove("checked");
+                settings.missionsBinary -= 1 << 12; //either substract the bit or use additional if below. I chose math.
+            }
         });
+
         event.target.querySelector(".checkbox").classList.add("checked");
         settings.missionsBinary += 1 << 12;
     }
 }
-document.querySelectorAll("#weaponContainer .setupCategory").forEach(function(weapon)
+document.querySelectorAll("#weaponContainer .setupCategory:not(#weaponSuppressors)").forEach(function(weapon)
 {
     weapon.addEventListener("click", selectWeapon);
 });
+
+function selectSuppressors(event)
+{
+    let bit = parseInt(event.target.getAttribute("bit"));
+    let checkbox = event.target.querySelector(".checkbox");
+    if (checkbox.classList.contains("checked"))
+    {
+        checkbox.classList.remove("checked");
+        settings.pois -= 1 << parseInt(event.target.getAttribute("bit"));
+    }
+    else
+    {
+        checkbox.classList.add("checked");
+        settings.pois += 1 << parseInt(event.target.getAttribute("bit"));
+    }
+}
+document.querySelector("#weaponSuppressors").addEventListener("click", selectSuppressors);
 
 /* mark disruptions */
 function markDisruption(event)
@@ -1065,17 +1925,23 @@ function markDisruption(event)
         delete settings[event.target.id.replace("disruption", "").toLowerCase() + "Disruption"];
         event.target.querySelector(".checkbox").classList.remove("checked");
 
-        if (bit)
+        if (event.target.id != "disruptionPoison") // disruptionPoison has different variable bit
             settings.missionsBinary -= 1 << parseInt(bit);
+        else //diarrhea powder is in points of interest variable, yes
+            settings.pois -= 1 << parseInt(bit);
+
     }
     else
     {
         settings[event.target.id.replace("disruption", "").toLowerCase() + "Disruption"] = 3;
         event.target.querySelector(".checkbox").classList.add("checked");
 
-        if (bit)
+        if (event.target.id != "disruptionPoison")
             settings.missionsBinary += 1 << parseInt(bit);
+        else
+            settings.pois += 1 << parseInt(bit);
     }
+    // console.log(event.target.id);
 }
 document.querySelectorAll("#disruptionContainer .setupCategory").forEach(function(disruption)
 {
@@ -1166,7 +2032,238 @@ document.querySelectorAll("#compoundLootContainer .setupCategory").forEach(funct
     compoundLoot.addEventListener("click", markCompoundLoot);
 });
 
-/* calculate loot values */
+
+/* GENERAL SECONDARY LOOT FUNCTIONS */
+//convert pixel to vx
+//to display secondary setter next to mouse cursor
+function convertPXToVW(px)
+{
+    return px * (100 / document.documentElement.clientWidth);
+}
+function convertPXToVH(px)
+{
+    return px * (100 / document.documentElement.clientHeight);
+}
+
+/* WARNING: THERE WILL BE UGLY COPY/PASTE JOB */
+
+/* ISLAND MAP SECONDARY LOOT */
+//close secondary selector at various occasions
+function closeIslandSecondarySelector()
+{
+    document.querySelector("#islandSelectorOverlay").classList.add("hidden");
+    let selector = document.querySelector("#islandSecondaryLootSelector");
+    selector.removeAttribute("bit");
+    selector.classList.add("hidden");
+}
+
+/* clear secondary spot */
+function clearIslandSecondary(location, bit)
+{
+    if (location.classList.contains("contentCash"))
+        settings.islandCash -= 1 << bit;
+    else if (location.classList.contains("contentCoke"))
+        settings.islandCoke -= 1 << bit;
+    else if (location.classList.contains("contentGold"))
+        settings.islandGold -= 1 << bit;
+    else if (location.classList.contains("contentWeed"))
+        settings.islandWeed -= 1 << bit;
+
+    location.className = "lootSpot";
+}
+
+//select compound secondary loot from selector
+function selectIslandSecondary(event)
+{
+    let target = event.target;
+
+    let selector = document.querySelector("#islandSecondaryLootSelector");
+    let bit = parseInt(selector.getAttribute("bit"));
+    let locationID = selector.getAttribute("location");
+    let location = document.querySelector("#" + locationID);
+
+    clearIslandSecondary(location, bit);
+
+    let loot = target.querySelector("span").textContent.toLowerCase();
+
+    if (loot == "cash")
+    {
+        settings.islandCash += 1 << bit;
+        location.classList.add("contentCash");
+    }
+    else if (loot == "coke")
+    {
+        settings.islandCoke += 1 << bit;
+        location.classList.add("contentCoke");
+    }
+    else if (loot == "gold")
+    {
+        settings.islandGold += 1 << bit;
+        location.classList.add("contentGold");
+    }
+    else if (loot == "weed")
+    {
+        settings.islandWeed += 1 << bit;
+        location.classList.add("contentWeed");
+    }
+
+    closeIslandSecondarySelector();
+}
+document.querySelectorAll("#islandSecondaryLootSelector .lootOption").forEach(function(option)
+{
+    option.addEventListener("click", selectIslandSecondary);
+});
+
+//compound secondary loot selector
+function openIslandSecondarySelector(event)
+{
+    let target = event.target;
+
+    let selector = document.querySelector("#islandSecondaryLootSelector");
+    let top = (convertPXToVH(event.clientY) + 1);
+    selector.style.top = top + "vh";
+    selector.style.left = (convertPXToVW(event.clientX) + 1) + "vw";
+
+    selector.classList.remove("hidden");
+    let height = convertPXToVH(selector.offsetHeight);
+
+    if ((100 - top) < height)
+        selector.style.top = 100 - height + "vh";
+
+    document.querySelector("#islandSelectorOverlay").classList.remove("hidden");
+
+    let bit = target.getAttribute("bit");
+    selector.setAttribute("bit", bit);
+
+    let location = target.id;
+    selector.setAttribute("location", location);
+}
+document.querySelectorAll("#mainSettings .lootSpot").forEach(function(lootSpot)
+{
+    lootSpot.addEventListener("click", openIslandSecondarySelector);
+});
+document.querySelector("#islandSelectorOverlay").addEventListener("click", closeIslandSecondarySelector);
+
+/* COMPOUND MAP SECONDARY LOOT */
+//close secondary selector at various occasions
+function closeCompoundSecondarySelector()
+{
+    document.querySelector("#compoundSelectorOverlay").classList.add("hidden");
+    let selector = document.querySelector("#compoundSecondaryLootSelector");
+    selector.removeAttribute("bit");
+    selector.classList.add("hidden");
+}
+
+/* clear secondary spot */
+function clearCompoundSecondary(location, bit)
+{
+    if (location.classList.contains("contentCash"))
+        settings.compoundCash -= 1 << bit;
+    else if (location.classList.contains("contentCoke"))
+        settings.compoundCoke -= 1 << bit;
+    else if (location.classList.contains("contentGold"))
+        settings.compoundGold -= 1 << bit;
+    else if (location.classList.contains("contentWeed"))
+        settings.compoundWeed -= 1 << bit;
+
+    location.className = "lootSpot";
+}
+
+//select compound secondary loot from selector
+function selectCompoundSecondary(event)
+{
+    let target = event.target;
+
+    let selector = document.querySelector("#compoundSecondaryLootSelector");
+    let bit = parseInt(selector.getAttribute("bit"));
+    let locationID = selector.getAttribute("location");
+    let location = document.querySelector("#" + locationID);
+
+    clearCompoundSecondary(location, bit);
+
+    let loot = target.querySelector("span").textContent.toLowerCase();
+
+    if (loot == "cash")
+    {
+        settings.compoundCash += 1 << bit;
+        location.classList.add("contentCash");
+    }
+    else if (loot == "coke")
+    {
+        settings.compoundCoke += 1 << bit;
+        location.classList.add("contentCoke");
+    }
+    else if (loot == "gold")
+    {
+        settings.compoundGold += 1 << bit;
+        location.classList.add("contentGold");
+    }
+    else if (loot == "weed")
+    {
+        settings.compoundWeed += 1 << bit;
+        location.classList.add("contentWeed");
+    }
+
+    closeCompoundSecondarySelector();
+}
+document.querySelectorAll("#compoundSecondaryLootSelector .lootOption").forEach(function(option)
+{
+    option.addEventListener("click", selectCompoundSecondary);
+});
+
+//compound secondary loot selector
+function openCompoundSecondarySelector(event)
+{
+    let target = event.target;
+
+    let selector = document.querySelector("#compoundSecondaryLootSelector");
+    let top = (convertPXToVH(event.clientY) + 1);
+    selector.style.top = top + "vh";
+    selector.style.left = (convertPXToVW(event.clientX) + 1) + "vw";
+
+    selector.classList.remove("hidden");
+    let height = convertPXToVH(selector.offsetHeight);
+
+    if ((100 - top) < height)
+        selector.style.top = 100 - height + "vh";
+    document.querySelector("#compoundSelectorOverlay").classList.remove("hidden");
+
+    let bit = target.getAttribute("bit");
+    selector.setAttribute("bit", bit);
+
+    let location = target.id;
+    selector.setAttribute("location", location);
+}
+document.querySelectorAll("#compoundSettings .lootSpot").forEach(function(lootSpot)
+{
+    lootSpot.addEventListener("click", openCompoundSecondarySelector);
+});
+
+document.querySelector("#compoundSelectorOverlay").addEventListener("click", closeCompoundSecondarySelector);
+
+
+/* SELECT PAINTING SPOTS */
+function togglePaintingLocation(event)
+{
+    let target = event.target;
+    let bit = parseInt(target.getAttribute("bit"));
+    if (target.classList.contains("paintingOn"))
+    {
+        target.classList.remove("paintingOn");
+        settings.compoundPainting -= 1 << bit;
+    }
+    else
+    {
+        target.classList.add("paintingOn");
+        settings.compoundPainting += 1 << bit;
+    }
+}
+document.querySelectorAll(".paintingSpot").forEach(function(spot)
+{
+    spot.addEventListener("click", togglePaintingLocation);
+});
+
+/* CALCULATE LOOT VALUES */
 
 /* reverses percentage from current value and known percentage */
 function reversePercentage(value, percent)
@@ -1238,12 +2335,10 @@ function calculateTake()
     let topPlayerTake = calculateTopPlayerTake();
 
     //calculate full take based on highest percentage
-    let fullTake = Math.floor(reversePercentage(settings.cutLimit || cayo.defaultCutLimit, 100 - topPlayerTake));
+    let fullTake = Math.floor(reversePercentage(settings.cutLimit, 100 - topPlayerTake));
 
-    //exceeding limits is bad
-    let scoreLimit = (settings.takeLimit || cayo.defaultTakeLimit);
-    if (fullTake > scoreLimit)
-        fullTake = scoreLimit;
+    if (fullTake > settings.takeLimit)
+        fullTake = settings.takeLimit;
 
     //add pavel cut for total money
     let score = Math.floor(reversePercentage(fullTake, cayo.npcCutPercentage));
@@ -1278,19 +2373,19 @@ function calculateTake()
 
     if (singleBagLoad) //might be undefined when no primary selected, we don't want 'undefined' in settings
     {
-        if (settings.islandLoot == "cash" || settings.compoundLoot == "cash")
+        if ((settings.compoundCash > 0 || settings.islandCash > 0) && !settings.defaultLootPrice)
             calculateCashValue(singleBagLoad);
 
-        if (settings.islandLoot == "coke" || settings.compoundLoot == "coke")
+        if ((settings.compoundCoke > 0 || settings.islandCoke > 0) && !settings.defaultLootPrice)
             calculateCokeValue(singleBagLoad);
 
-        if (settings.islandLoot == "gold" || settings.compoundLoot == "gold")
+        if ((settings.compoundGold > 0 || settings.islandGold > 0) && !settings.defaultLootPrice)
             calculateGoldValue(singleBagLoad);
 
-        if (settings.painting || settings.painting)
+        if (settings.compoundPainting > 0 && !settings.defaultLootPrice)
             calculatePaintingValue(singleBagLoad);
 
-        if (settings.islandLoot == "weed" || settings.compoundLoot == "weed")
+        if ((settings.compoundWeed > 0 || settings.islandWeed > 0) && !settings.defaultLootPrice)
             calculateWeedValue(singleBagLoad);
     }
 
@@ -1322,18 +2417,18 @@ function calculateTake()
 
     document.querySelector("#totalCut").textContent = formatNumber(fullTake.toString()).string;
 
-    //don't want to need this anymore but i might
-    console.log("single bag load", singleBagLoad);
-    // console.log("rubios office safe max", safeMax);
-    console.log("max take", settings.cutLimit || cayo.defaultCutLimit);
-    console.log("top player take", topPlayerTake);
-    console.log("full take", fullTake);
-    console.log("score", score);
-    console.log("primary price", primaryPrice);
-    // console.log("primary minus pavel", primaryMinusPavel);
-    console.log("score minus primary", scoreMinusPrimary);
-    console.log("gold value", settings.goldValue);
-    console.log("painting value", settings.paintingValue);
+    // //don't want to need this anymore but i might
+    // console.log("single bag load", singleBagLoad);
+    // // console.log("rubios office safe max", safeMax);
+    // console.log("max take", settings.cutLimit || cayo.defaultCutLimit);
+    // console.log("top player take", topPlayerTake);
+    // console.log("full take", fullTake);
+    // console.log("score", score);
+    // console.log("primary price", primaryPrice);
+    // // console.log("primary minus pavel", primaryMinusPavel);
+    // console.log("score minus primary", scoreMinusPrimary);
+    // console.log("gold value", settings.goldValue);
+    // console.log("painting value", settings.paintingValue);
 }
 
 /* set team size*/
@@ -1421,31 +2516,42 @@ function formatTakeLimit(element)
 }
 function updateTakeLimit(event)
 {
-    formatCutLimit(event.target);
+    formatTakeLimit(event.target);
     calculateTake();
 }
 let takeLimit = document.querySelector("#takeLimit");
 takeLimit.addEventListener("input", updateTakeLimit);
-takeLimit.value = cayo.defaultTakeLimit;
+takeLimit.value = cayo.normalModeTakeLimit;
 formatTakeLimit(takeLimit);
 
+/* beware of copy-paste monster*/
 /* select supply truck location */
 function selectSupplyTruckLocation(event)
 {
     let target = event.target;
+
     settings.supplyTruckLocation = parseInt(target.id.replace("truck", ""));
 
     if (target.classList.contains("truckOn")) //disable truck selection
     {
+        settings.pois -= 1 << 15;
         delete settings.supplyTruckLocation;
         target.classList.remove("truckOn");
     }
     else
     {
+        let isTruckSelected = false;
         document.querySelectorAll(".truckIcon").forEach(function(truckElement)
         {
+            if (truckElement.classList.contains("truckOn"))
+                isTruckSelected = true;
             truckElement.classList.remove("truckOn");
         });
+
+        //do not add bit if truck is already selected
+        //cause you're just switching places of already enabled truck
+        if (!isTruckSelected)
+            settings.pois += 1 << 15;
 
         target.classList.add("truckOn");
     }
@@ -1453,6 +2559,51 @@ function selectSupplyTruckLocation(event)
 document.querySelectorAll(".truckIcon").forEach(function(truckElement)
 {
     truckElement.addEventListener("click", selectSupplyTruckLocation);
+});
+
+//generic mark function
+function markMyPOIsBoys(event, type)
+{
+    let target = event.target;
+    let bit = parseInt(event.target.getAttribute("bit"));
+
+    if (target.classList.contains(type + "On")) //disable truck selection
+    {
+        settings.pois -= 1 << bit;
+        target.classList.remove(type + "On");
+    }
+    else
+    {
+        settings.pois += 1 << bit;
+        target.classList.add(type + "On");
+    }
+}
+//select grappling hook locations
+function selectGrapplingHookLocation(event)
+{
+    markMyPOIsBoys(event, "hook");
+}
+document.querySelectorAll(".hookIcon").forEach(function(hookElement)
+{
+    hookElement.addEventListener("click", selectGrapplingHookLocation);
+});
+//select guard clothes locations
+function selectGuardClothesLocation(event)
+{
+    markMyPOIsBoys(event, "clothes");
+}
+document.querySelectorAll(".clothesIcon").forEach(function(clothesElement)
+{
+    clothesElement.addEventListener("click", selectGuardClothesLocation);
+});
+//select bolt cutters location
+function selectBoltCuttersLocation(event)
+{
+    markMyPOIsBoys(event, "cutters");
+}
+document.querySelectorAll(".cuttersIcon").forEach(function(cuttersElement)
+{
+    cuttersElement.addEventListener("click", selectBoltCuttersLocation);
 });
 
 /* edit primary value */
@@ -1493,22 +2644,59 @@ document.querySelector("#elRubioSafe").addEventListener("click", toggleOfficeSaf
 function generateStattext()
 {
     var s = ["INT32"];
-    s.push("$MPx_H4CNF_BS_GEN"); //TODO document this
-    s.push(settings.poisonDisruption ? "131071" : "122879");
 
-    s.push("$MPx_H4CNF_BS_ENTR"); //TODO binary values for each entry point
-    s.push("63");
+    /* $MPx_H4CNF_BS_GEN
+    grappling hooks
+    (bits are left shift value)
+    int 1, bit 0 https://i.imgur.com/i9PpBqb.jpeg
+    int 2, bit 1 https://i.imgur.com/XnTJNZ0.jpeg
+    int 4, bit 2 https://i.imgur.com/mD1CnIH.jpg
+    int 8, bit 3 https://i.imgur.com/DIRqJeO.jpeg
 
-    s.push("$MPx_H4CNF_BS_ABIL"); //TODO binary values for each support option
-    s.push("63");
+    guard clothes
+    int 16, bit 4 https://i.imgur.com/TOToYmD.jpg
+    int 32, bit 5 https://i.imgur.com/F5QICaa.jpg
+    int 64, bit 6 https://i.imgur.com/o7ybn3e.jpeg
+    int 128, bit 7 https://i.imgur.com/TnmehzB.jpeg
 
-    if (settings.weaponID) //TODO suppressors are on by default, don't know where are those
+    bolt cutters
+    int 256, bit 8 https://i.imgur.com/vp2dZ8h.jpg
+    int 512, bit 9 https://i.imgur.com/uDVoRVY.jpg
+    int 1024, bit 10 https://i.imgur.com/nRQUIAb.jpg
+    int 2048, bit 11 https://i.imgur.com/quloOFA.jpg
+
+    suppressors
+    int 4096, bit 12
+
+    cutting powder
+    int 8192, bit 13
+
+    power station
+    int 16384, bit 14 https://i.imgur.com/BwTegxb.jpg
+
+    supply truck
+    int 32768, bit 15 https://i.imgur.com/vScO6P8.jpg
+
+    control tower
+    int 65536, bit 16 https://i.imgur.com/XZ6WiHV.jpg
+    */
+
+    s.push("$MPx_H4CNF_BS_GEN");
+    s.push(settings.pois);
+
+    // s.push("$MPx_H4CNF_BS_ENTR"); //TODO binary values for each entry point
+    // s.push("63");
+
+    // s.push("$MPx_H4CNF_BS_ABIL"); //TODO binary values for each support option
+    // s.push("63");
+
+    if (settings.weaponID)
     {
         s.push("$MPx_H4CNF_WEAPONS");
         s.push(settings.weaponID.toString());
     }
 
-    if (settings.weaponsDisruption) //weapon disruption, full power
+    if (settings.weaponsDisruption) //weapon disruption, full power (int 3)
     {
         s.push("$MPx_H4CNF_WEP_DISRP");
         s.push(settings.weaponsDisruption.toString());
@@ -1526,25 +2714,25 @@ function generateStattext()
         s.push(settings.airsupportDisruption.toString());
     }
 
-    if (settings.primary) //primary loot
+    if (settings.primary && settings.primary != "default") //primary loot
     {
         s.push("$MPx_H4CNF_TARGET");
         s.push(settings.primary.value.toString());
     }
 
-    if (settings.boltcuttersEquipment) //mark all bolt cutter locations
+    if ((settings.pois & 9) != 0 || (settings.pois & 10) != 0 || (settings.pois & 11) != 0 || (settings.pois & 12) != 0) //mark bolt cutter locations
     {
         s.push("$MPx_H4CNF_BOLTCUT");
         s.push("4424");
     }
 
-    if (settings.uniformEquipment) //mark all uniform locations
+    if ((settings.pois & 5) != 0 || (settings.pois & 6) != 0 || (settings.pois & 7) != 0 || (settings.pois & 8) != 0) //mark uniform locations
     {
         s.push("$MPx_H4CNF_UNIFORM");
         s.push("5256");
     }
 
-    if (settings.grapplingEquipment) //mark all uniform locations
+    if ((settings.pois & 1) != 0 || (settings.pois & 2) != 0 || (settings.pois & 3) != 0 || (settings.pois & 4) != 0) //mark hook locations
     {
         s.push("$MPx_H4CNF_GRAPPEL");
         s.push("5156");
@@ -1557,28 +2745,164 @@ function generateStattext()
     }
 
     //unlock all approaches i think
-    s.push("$MPx_H4CNF_APPROACH");
-    s.push("-1");
+    // s.push("$MPx_H4CNF_APPROACH");
+    // s.push("-1");
 
-    //secondary loot enabled or not
+    /* COMPOUND BITS
+    blank map https://i.imgur.com/IVqpjU3.jpg
+
+    secondary loot
+    int 1, bin 0, north a https://i.imgur.com/zANJYuc.jpg
+    int 2, bin 1, north b https://i.imgur.com/hnKHMbi.jpeg
+    int 4, bin 2, central a https://i.imgur.com/Q01PQfz.jpg
+    int 8, bin 3, central b https://i.imgur.com/4nYIRQ3.jpg
+    int 16, bin 4, south a https://i.imgur.com/p081Qi6.jpeg
+    int 32, bin 5, south b https://i.imgur.com/B6l1wwj.jpg
+    int 64, bin 6, basement a https://i.imgur.com/RqN3oUG.jpg
+    int 128, bin 7, basement b https://i.imgur.com/dfzSX6o.jpg
+
+    painting
+    int 1, bin 0, north https://i.imgur.com/IIHw0t9.jpeg
+    int 2, bin 1, central https://i.imgur.com/kxM1IX2.jpg
+    int 3, bin 2, south https://i.imgur.com/eGCAnx6.jpg
+    int 4, bin 3, office a https://i.imgur.com/8iYo4y5.jpg
+    int 5, bin 4, office b https://i.imgur.com/UPMedAW.jpeg
+    int 6, bin 5, basement a https://i.imgur.com/Lg06n2R.jpg
+    int 7, bin 6, basement b https://i.imgur.com/Qdbk18Y.jpg
+    */
+
+
+    /* ISLAND BITS
+    ref https://i.imgur.com/ccAahxj.jpg
+    hangar
+    int 1, bin 0, https://i.imgur.com/jPs2gQs.jpg
+    int 2, bin 1, https://i.imgur.com/nKRx1lp.jpeg
+    int 4, bin 2, https://i.imgur.com/e2qPz3q.jpeg
+    int 8, bin 3, https://i.imgur.com/mFkJmLm.jpeg
+
+    airstrip
+    int 16, bin 4 https://i.imgur.com/iFkXVzB.jpeg
+    int 32, bin 5, https://i.imgur.com/huQWq9L.jpeg
+
+    north dock
+    int 64, bin 6, https://i.imgur.com/JTWhO37.jpeg
+    int 128, bin 7, https://i.imgur.com/gSgPWzL.jpg
+
+    int 256, bin 8, https://i.imgur.com/jqzNjhY.jpg
+    int 512, bin 9, https://i.imgur.com/HMKaDGd.jpeg
+    int 1024, bin 10 https://i.imgur.com/i5aVuuR.jpg
+
+    int 2048, bin 11 https://i.imgur.com/Wwadzhm.jpeg
+    int 4096, bin 12 https://i.imgur.com/UkHrpkP.jpeg
+
+    weed farm
+    int 8192, bin 13 https://i.imgur.com/zgfeofw.jpg
+    int 16384, bin 14 https://i.imgur.com/c3wgI6J.jpeg
+
+    central shed
+    int 32768, bin 15, https://i.imgur.com/RDTQruY.jpeg
+    int 65536, bin 16, https://i.imgur.com/fX08CoH.jpeg
+
+    main dock east shed
+    int 131072, bin 17, https://i.imgur.com/jys5OaO.jpg
+    int 262144, bin 18, https://i.imgur.com/uiIYmOS.jpg
+
+    main dock large shed
+    524288, bin 19, https://i.imgur.com/L8NW8QC.jpg
+    1048576, bin 20, https://i.imgur.com/AoCoRQ0.jpeg
+    2097152, bin 21, https://i.imgur.com/qGcwBvn.jpg
+
+    main dock west shed
+    4194304, bin 22, https://i.imgur.com/ivsNPQH.jpg
+    8388608, bin 23, https://i.imgur.com/9sqxEql.jpg
+    */
+
+    /* SECONDARY LOOT LOCATIONS AND SCOPES */
+
+    //CASH
     s.push("$MPx_H4LOOT_CASH_I");
-    s.push(settings.islandLoot == "cash" ? "-1" : "0");
+    s.push(settings.islandCash.toString());
+    s.push("$MPx_H4LOOT_CASH_I_SCOPED");
+    s.push(settings.islandCash.toString());
     s.push("$MPx_H4LOOT_CASH_C");
-    s.push(settings.compoundLoot == "cash" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_WEED_I");
-    s.push(settings.islandLoot == "weed" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_WEED_C");
-    s.push(settings.compoundLoot == "weed" ? "-1" : "0");
+    s.push(settings.compoundCash.toString());
+    s.push("$MPx_H4LOOT_CASH_C_SCOPED");
+    s.push(settings.compoundCash.toString());
+
+    //COKE
     s.push("$MPx_H4LOOT_COKE_I");
-    s.push(settings.islandLoot == "coke" ? "-1" : "0");
+    s.push(settings.islandCoke.toString());
+    s.push("$MPx_H4LOOT_COKE_I_SCOPED");
+    s.push(settings.islandCoke.toString());
     s.push("$MPx_H4LOOT_COKE_C");
-    s.push(settings.compoundLoot == "coke" ? "-1" : "0");
+    s.push(settings.compoundCoke.toString());
+    s.push("$MPx_H4LOOT_COKE_C_SCOPED");
+    s.push(settings.compoundCoke.toString());
+
+    //GOLD
     s.push("$MPx_H4LOOT_GOLD_I");
-    s.push(settings.islandLoot == "gold" ? "-1" : "0");
+    s.push(settings.islandGold.toString());
+    s.push("$MPx_H4LOOT_GOLD_I_SCOPED");
+    s.push(settings.islandGold.toString());
     s.push("$MPx_H4LOOT_GOLD_C");
-    s.push(settings.compoundLoot == "gold" ? "-1" : "0");
+    s.push(settings.compoundGold.toString());
+    s.push("$MPx_H4LOOT_GOLD_C_SCOPED");
+    s.push(settings.compoundGold.toString());
+
+    //WEED
+    s.push("$MPx_H4LOOT_WEED_I");
+    s.push(settings.islandWeed.toString());
+    s.push("$MPx_H4LOOT_WEED_I_SCOPED");
+    s.push(settings.islandWeed.toString());
+    s.push("$MPx_H4LOOT_WEED_C");
+    s.push(settings.compoundWeed.toString());
+    s.push("$MPx_H4LOOT_WEED_C_SCOPED");
+    s.push(settings.compoundWeed.toString());
+
+    //PAINTING
     s.push("$MPx_H4LOOT_PAINT");
-    s.push(settings.painting ? "-1" : "0");
+    s.push(settings.compoundPainting.toString());
+    s.push("$MPx_H4LOOT_PAINT_SCOPED");
+    s.push(settings.compoundPainting.toString());
+
+    //set cash value
+    if (settings.defaultLootPrice == false)
+    {
+
+        if (settings.cashValue)
+        {
+            s.push("$MPx_H4LOOT_CASH_V");
+            s.push(settings.cashValue.toString());
+        }
+
+        //set coke value
+        if (settings.cokeValue)
+        {
+            s.push("$MPx_H4LOOT_COKE_V");
+            s.push(settings.cokeValue.toString());
+        }
+
+        //set gold value
+        if (settings.goldValue)
+        {
+            s.push("$MPx_H4LOOT_GOLD_V");
+            s.push(settings.goldValue.toString());
+        }
+
+        //set painting value
+        if (settings.paintingValue)
+        {
+            s.push("$MPx_H4LOOT_PAINT_V");
+            s.push(settings.paintingValue.toString());
+        }
+
+        //set painting value
+        if (settings.weedValue)
+        {
+            s.push("$MPx_H4LOOT_WEED_V");
+            s.push(settings.weedValue.toString());
+        }
+    }
 
     //set difficulty
     s.push("$MPx_H4_PROGRESS");
@@ -1587,64 +2911,12 @@ function generateStattext()
     else
         s.push("124271");
 
-    //set cash value
-    if (settings.cashValue)
-    {
-        s.push("$MPx_H4LOOT_CASH_V");
-        s.push(settings.cashValue.toString());
-    }
-
-    //set coke value
-    if (settings.cokeValue)
-    {
-        s.push("$MPx_H4LOOT_COKE_V");
-        s.push(settings.cokeValue.toString());
-    }
-
-    //set gold value
-    if (settings.goldValue)
-    {
-        s.push("$MPx_H4LOOT_GOLD_V");
-        s.push(settings.goldValue.toString());
-    }
-
-    //set painting value
-    if (settings.paintingValue)
-    {
-        s.push("$MPx_H4LOOT_PAINT_V");
-        s.push(settings.paintingValue.toString());
-    }
-
-    //set painting value
-    if (settings.weedValue)
-    {
-        s.push("$MPx_H4LOOT_WEED_V");
-        s.push(settings.weedValue.toString());
-    }
-
-    //secondary loot scoped or not
-    s.push("$MPx_H4LOOT_CASH_I_SCOPED");
-    s.push(settings.islandLoot == "cash" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_CASH_C_SCOPED");
-    s.push(settings.compoundLoot == "cash" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_WEED_I_SCOPED");
-    s.push(settings.islandLoot == "weed" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_WEED_C_SCOPED");
-    s.push(settings.compoundLoot == "weed" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_COKE_I_SCOPED");
-    s.push(settings.islandLoot == "coke" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_COKE_C_SCOPED");
-    s.push(settings.compoundLoot == "coke" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_GOLD_I_SCOPED");
-    s.push(settings.islandLoot == "gold" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_GOLD_C_SCOPED");
-    s.push(settings.compoundLoot == "gold" ? "-1" : "0");
-    s.push("$MPx_H4LOOT_PAINT_SCOPED");
-    s.push(settings.painting ? "-1" : "0");
-
     //no idea what this does, can guess by the name though
     s.push("$MPx_H4_MISSIONS");
     s.push(settings.missionsBinary.toString());
+
+    if (settings.missionsBinary > 65535)
+        console.error("Mission Binary ridiculously high:", settings.missionsBinary)
 
     s.push("$MPx_H4_PLAYTHROUGH_STATUS");
     s.push("40000");
